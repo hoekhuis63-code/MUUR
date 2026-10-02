@@ -146,3 +146,14 @@ body {
     @apply mt-2 mb-8 max-w-2xl text-lg text-ink/80;
   }
 }
+.prose-page h2 {
+  scroll-margin-top: 5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgb(7 52 89 / 0.1);
+}
+.prose-page strong {
+  color: #073459;
+}
+.prose-page > p:first-child {
+  color: rgb(31 36 41 / 0.7);
+}

@@ -1,12 +1,12 @@
 # Privacyverklaring
 
-> **Concept: laten controleren door een jurist/boekhouder voor livegang.**
+<!-- Laat deze tekst voor livegang nalezen. Bedrijfsgegevens komen uit het config-tabblad ({{...}}). -->
 
-Versie: [INVULLEN datum]
+Versie: 2 oktober 2026
 
 ## Wie zijn wij
 
-**[INVULLEN bedrijfsnaam]**, gevestigd aan [INVULLEN adres], KvK-nummer [INVULLEN], is verwerkingsverantwoordelijke voor de persoonsgegevens die via hethoekhuus.nl worden verwerkt. Contact: [INVULLEN e-mailadres].
+**{{bedrijfsnaam}}**, gevestigd aan {{adres}}, KvK-nummer {{kvk}}, is verwerkingsverantwoordelijke voor de persoonsgegevens die via hethoekhuus.nl worden verwerkt. Contact: {{contact_email}}.
 
 ## Welke gegevens we verwerken
 
@@ -48,7 +48,7 @@ Op hethoekhuus.nl tonen we alleen je **bedrijfsnaam, logo, website** en, bij de 
 ## Bewaartermijn
 
 - Fiscale gegevens (facturen en betalingen): **7 jaar**.
-- Overige gegevens: [INVULLEN, bijv. tot het einde van de looptijd van je vak].
+- Overige gegevens: tot het einde van de looptijd van je vak.
 
 ## Cookies
 
@@ -56,10 +56,10 @@ We gebruiken **geen trackingcookies**. Alleen tijdens je bezoek onthoudt de site
 
 ## Jouw rechten
 
-Je hebt het recht op inzage, correctie en verwijdering van je gegevens en kunt bezwaar maken tegen de verwerking. Stuur je verzoek naar [INVULLEN e-mailadres].
+Je hebt het recht op inzage, correctie en verwijdering van je gegevens en kunt bezwaar maken tegen de verwerking. Stuur je verzoek naar {{contact_email}}.
 
 Ben je niet tevreden over hoe we met je gegevens omgaan, dan kun je een klacht indienen bij de [Autoriteit Persoonsgegevens](https://autoriteitpersoonsgegevens.nl).
 
 ## Contact
 
-[INVULLEN bedrijfsnaam] · [INVULLEN e-mailadres] · [INVULLEN adres]
+{{bedrijfsnaam}} · {{contact_email}} · {{adres}}

@@ -16,18 +16,18 @@ export function SiteNav() {
         </a>
         <div className="flex items-center gap-1 sm:gap-4">
           <a
-            href="#veiling"
+            href="/#veiling"
             className="hidden px-2 font-semibold text-navy hover:text-oranje sm:inline"
           >
             The Spot
           </a>
           <a
-            href="#zo-werkt-het"
+            href="/#zo-werkt-het"
             className="hidden px-2 font-semibold text-navy hover:text-oranje sm:inline"
           >
             Zo werkt het
           </a>
-          <a href="#muur" className="btn-primary min-h-10 w-auto px-5 text-base">
+          <a href="/#muur" className="btn-primary min-h-10 w-auto px-5 text-base">
             Kies je vak
           </a>
         </div>
