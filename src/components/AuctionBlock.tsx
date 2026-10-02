@@ -46,7 +46,7 @@ export function AuctionBlock({ spot, bids, config, bidFormUrl }: Props) {
         The Spot
       </h2>
       <p className="mt-1 text-blue-100">
-        Het grootste vak: 100 x 80 cm, midden op de muur. Gaat naar het hoogste bod.
+        Het grootste vak: {spot ? `${spot.w_cm} x ${spot.h_cm} cm` : '85 x 99 cm'}, midden op de muur. Gaat naar het hoogste bod.
       </p>
 
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
@@ -81,9 +81,12 @@ export function AuctionBlock({ spot, bids, config, bidFormUrl }: Props) {
               Bied mee
             </a>
           ) : (
-            <button type="button" disabled className="btn-primary sm:w-auto">
-              Bieden kan binnenkort
-            </button>
+            <a
+              href={`mailto:${config.contact_email || 'info@hethoekhuus.nl'}?subject=${encodeURIComponent('Bod op The Spot')}&body=${encodeURIComponent('Bedrijfsnaam:\nKvK-nummer:\nMijn bod (excl. btw): €\nTelefoon:\n')}`}
+              className="btn-primary sm:w-auto"
+            >
+              Bied mee per mail
+            </a>
           )}
           <p className="mt-2 text-sm text-blue-100">
             Je volgende bod is minimaal {euro(state.nextMinimum)}. Bieden is bindend en alleen voor

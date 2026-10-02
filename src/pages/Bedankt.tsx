@@ -94,10 +94,18 @@ export function Bedankt() {
             className="w-full border-0"
           />
         ) : (
-          <p className="rounded-lg bg-amber-50 p-4">
-            Het formulier is even niet beschikbaar. Mail je logo met het vaknummer naar ons; je
-            vindt ons e-mailadres onderaan de homepage.
-          </p>
+          <div className="space-y-3 rounded-lg bg-amber-50 p-4">
+            <p>
+              Mail je logo naar <strong>info@hethoekhuus.nl</strong> met je vaknummer in het
+              onderwerp. Liefst als SVG, PDF, AI of EPS.
+            </p>
+            <a
+              href={`mailto:info@hethoekhuus.nl?subject=${encodeURIComponent(`Logo voor vak ${vak ?? ''}`)}`}
+              className="btn-primary sm:w-auto"
+            >
+              Mail je logo
+            </a>
+          </div>
         )}
       </section>
     </main>
