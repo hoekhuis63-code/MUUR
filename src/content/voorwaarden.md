@@ -1,4 +1,4 @@
-<!-- Tekst aangeleverd door Het Hoekhuus (2 oktober 2026). Het KvK-nummer komt uit het config-tabblad van de sheet ({{kvk}}). -->
+<!-- Tekst aangeleverd door Het Hoekhuus (2 oktober 2026). Het e-mailadres komt uit het config-tabblad van de sheet (contact_email). -->
 
 # Algemene voorwaarden
 
@@ -8,7 +8,7 @@ Deze voorwaarden gelden voor elke aankoop van een vak en elk bod op The Spot via
 
 ## 1. Wie wij zijn
 
-De Muur van Het Hoekhuus is een aanbod van **KWW media**, handelend onder de naam **Het Hoekhuus**, gevestigd aan Groenloseweg 63, 7101 AD Winterswijk, ingeschreven bij de KvK onder nummer {{kvk}}, btw-nummer NL808508453B01. Je bereikt ons via [hoekhuis63@gmail.com](mailto:hoekhuis63@gmail.com).
+De Muur van Het Hoekhuus is een aanbod van **KWW media**, handelend onder de naam **Het Hoekhuus**, gevestigd aan Groenloseweg 63, 7101 AD Winterswijk, ingeschreven bij de KvK onder nummer 42151342, btw-nummer NL808508453B01. Je bereikt ons via [{{contact_email}}](mailto:{{contact_email}}).
 
 ## 2. Begrippen
 
@@ -130,7 +130,7 @@ We verwerken je gegevens volgens onze [privacyverklaring](/privacy).
 
 ## 18. Klachten en contact
 
-Heb je een vraag of klacht? Mail naar [hoekhuis63@gmail.com](mailto:hoekhuis63@gmail.com). We reageren binnen 5 werkdagen.
+Heb je een vraag of klacht? Mail naar [{{contact_email}}](mailto:{{contact_email}}). We reageren binnen 5 werkdagen.
 
 ## 19. Wijzigingen
 

@@ -23,8 +23,7 @@ gebouwd. Werk de stappen in deze volgorde af; achter elke stap staat wat je teru
 De sheet staat klaar in Drive > 0.5 Content > **Muur van Het Hoekhuus · beheer**, met alle 61
 vakken.
 
-1. Tabblad `config`: vul `adres`, `kvk`, `btw_nummer` en `facebook_url` in (vervang
-   `[INVULLEN]`). Check `bedrijfsnaam` (officiële naam).
+1. Tabblad `config`: bedrijfsgegevens staan erin. Alleen `facebook_url` nog invullen.
 2. **Bestand > Delen > Publiceren op internet**: kies tabblad `spots`, formaat
    _Door komma's gescheiden waarden (.csv)_, Publiceren, link kopiëren. Herhaal voor
    `veiling_publiek` en `config`.

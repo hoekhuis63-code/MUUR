@@ -110,14 +110,14 @@ Kolommen `key` en `value`:
 | `startbod_eur`      | `5000`                                               |
 | `min_verhoging_eur` | `250`                                                |
 | `looptijd`          | `zolang het Hoekhuus van ons is, en minimaal 2 jaar` |
-| `bedrijfsnaam`      | [INVULLEN]                                           |
-| `adres`             | [INVULLEN]                                           |
-| `kvk`               | [INVULLEN]                                           |
-| `btw_nummer`        | [INVULLEN]                                           |
-| `contact_email`     | [INVULLEN]                                           |
+| `bedrijfsnaam`      | Het Hoekhuus (KWW media)                             |
+| `adres`             | Groenloseweg 63, 7101 AD Winterswijk                 |
+| `kvk`               | 42151342                                             |
+| `btw_nummer`        | NL808508453B01                                       |
+| `contact_email`     | info@hethoekhuus.nl                                  |
 | `tiktok_url`        | `https://www.tiktok.com/@hethoekhuis`                |
 | `instagram_url`     | `https://www.instagram.com/hethoekhuus`              |
-| `facebook_url`      | [INVULLEN]                                           |
+| `facebook_url`      | volledige https-link naar de Facebookpagina          |
 
 ### Niet-gepubliceerde tabbladen
 
