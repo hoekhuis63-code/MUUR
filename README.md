@@ -196,7 +196,11 @@ De site plakt `?client_reference_id=<ID>-<bron>&locale=nl` achter de betaallink.
 1. Stripe mailt ons → zet het vak in de Sheet op `bezet`.
 2. De koper levert het logo aan via Tally (komt in `aanleveringen`). Keur het binnen **2 werkdagen** goed of vraag om een betere versie.
 3. Plak het logo binnen **14 dagen** na goedkeuring op de muur.
-4. Zet daarna `status` op `verkocht` en vul `koper`, `website`, `logo_url` (https, png/svg) en `verkocht_op` in.
+4. Zet daarna `status` op `verkocht` en vul `koper`, `website`, `logo_url` en `verkocht_op` in. Voor `logo_url`: upload het logo op GitHub in de map `public/logos` (Add file > Upload files, bijv. `T07.png`) en vul `/logos/T07.png` in. Een volledige https-link mag ook.
+
+### Muur voorbereiden en labels printen
+
+Open `https://hethoekhuus.nl/print` (staat niet in het menu). Daar staan een uitzettekening met alle maten (x, y, breedte, hoogte in cm, gemeten vanaf linksboven) en per vrij vak een label met ID en prijs. Print op **100% / werkelijke grootte**, niet "passend maken". De pagina leest de actuele sheet, dus print opnieuw als de indeling verandert.
 
 ### Veiling The Spot
 

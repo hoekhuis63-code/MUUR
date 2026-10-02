@@ -1,0 +1,4 @@
+Zet hier goedgekeurde logo's voor de site, bijv. T07.png of T07.svg (liefst < 200 KB).
+In de sheet wordt logo_url dan: /logos/T07.png
+Uploaden kan zonder installatie: GitHub > repo MUUR > map public/logos > Add file > Upload files.
+Vercel zet het binnen een minuut live.

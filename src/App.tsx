@@ -6,6 +6,7 @@ const Bedankt = lazy(() => import('./pages/Bedankt').then((m) => ({ default: m.B
 const Voorwaarden = lazy(() =>
   import('./pages/ContentPage').then((m) => ({ default: m.Voorwaarden })),
 );
+const PrintPage = lazy(() => import('./pages/PrintPage').then((m) => ({ default: m.PrintPage })));
 const Privacy = lazy(() => import('./pages/ContentPage').then((m) => ({ default: m.Privacy })));
 
 const TITLES: Record<string, string> = {
@@ -34,6 +35,12 @@ export function App() {
       return (
         <Suspense fallback={null}>
           <Voorwaarden />
+        </Suspense>
+      );
+    case '/print':
+      return (
+        <Suspense fallback={null}>
+          <PrintPage />
         </Suspense>
       );
     case '/privacy':

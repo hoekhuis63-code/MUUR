@@ -25,6 +25,12 @@ const TAP_SLOP_PX = 8;
 const MIN_FONT_PX = 9;
 const HOME: View = { x: 0, y: 0, scale: 1 };
 
+function spotIdAt(target: EventTarget | null): string | undefined {
+  return target instanceof Element
+    ? (target.closest<SVGGElement>('[data-id]')?.dataset.id ?? undefined)
+    : undefined;
+}
+
 function clampView(view: View): View {
   const scale = Math.min(MAX_SCALE, Math.max(1, view.scale));
   const w = WALL_WIDTH_CM / scale;
@@ -56,6 +62,8 @@ export function WallMap({ spots, auctionAmount, hasBids, selectedId, onSelect }:
     moved: boolean;
   } | null>(null);
   const suppressClick = useRef(false);
+  const downId = useRef<string | undefined>(undefined);
+  const lastPointerSelect = useRef(0);
 
   const viewW = WALL_WIDTH_CM / view.scale;
   const viewH = WALL_HEIGHT_CM / view.scale;
@@ -130,8 +138,14 @@ export function WallMap({ spots, auctionAmount, hasBids, selectedId, onSelect }:
 
   function onPointerDown(event: PointerEvent<SVGSVGElement>) {
     if (event.pointerType === 'mouse' && event.button !== 0) return;
+    // Een nieuwe primaire aanraking = nieuw gebaar; vergeten vingers van eerder opruimen.
+    if (event.isPrimary) {
+      pointers.current.clear();
+      gesture.current = null;
+      suppressClick.current = false;
+    }
     pointers.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
-    if (pointers.current.size === 1) suppressClick.current = false;
+    downId.current = pointers.current.size === 1 ? spotIdAt(event.target) : undefined;
     startGesture();
   }
 
@@ -179,13 +193,25 @@ export function WallMap({ spots, auctionAmount, hasBids, selectedId, onSelect }:
   }
 
   function onPointerUp(event: PointerEvent<SVGSVGElement>) {
+    // Tik = selecteren op loslaten. Niet via click: die blijft na zoomgebaren soms uit.
+    const tapped =
+      event.type === 'pointerup' &&
+      pointers.current.size === 1 &&
+      !suppressClick.current &&
+      downId.current !== undefined &&
+      downId.current === spotIdAt(event.target);
+    if (tapped && downId.current) {
+      lastPointerSelect.current = Date.now();
+      onSelect(downId.current);
+    }
     pointers.current.delete(event.pointerId);
     if (pointers.current.size === 0) gesture.current = null;
     else startGesture();
   }
 
+  // Click komt hier alleen nog binnen via schermlezers of na een al afgehandelde tik.
   function activate(id: string) {
-    if (suppressClick.current) return;
+    if (suppressClick.current || Date.now() - lastPointerSelect.current < 700) return;
     onSelect(id);
   }
 

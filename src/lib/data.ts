@@ -71,6 +71,11 @@ function isSafeUrl(url: string): boolean {
   return url === '' || /^https:\/\//i.test(url);
 }
 
+/** Logo's mogen ook in de repo staan (public/logos/T07.png -> /logos/T07.png). */
+function isSafeLogo(url: string): boolean {
+  return isSafeUrl(url) || /^\/logos\/[\w.-]+$/.test(url);
+}
+
 export function parseSpot(row: RawRow): Spot | string {
   const id = str(row.id).toUpperCase();
   const type = str(row.type).toLowerCase() as SpotType;
@@ -107,7 +112,7 @@ export function parseSpot(row: RawRow): Spot | string {
     verkocht_op: str(row.verkocht_op),
   };
   for (const key of ['website', 'logo_url', 'betaallink'] as const) {
-    if (!isSafeUrl(spot[key])) {
+    if (!(key === 'logo_url' ? isSafeLogo : isSafeUrl)(spot[key])) {
       console.warn(`[muur] ${id}: ${key} genegeerd (moet met https:// beginnen)`);
       spot[key] = '';
     }
