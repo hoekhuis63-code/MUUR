@@ -73,9 +73,10 @@ export function Bedankt() {
         </h2>
         <ol className="mt-3 list-decimal space-y-2 pl-5 text-stone-800">
           <li>Stuur hieronder je logo in. Liefst als SVG, PDF, AI of EPS.</li>
-          <li>Wij keuren je logo binnen 2 werkdagen en sturen je een drukproef.</li>
+          <li>We beoordelen je logo binnen 5 werkdagen.</li>
           <li>
-            Binnen 14 dagen na goedkeuring hangt je logo op de muur. Je ziet het terug in een video.
+            In de regel binnen 14 dagen na goedkeuring hangt je logo op de muur. Je krijgt een foto
+            als bewijs.
           </li>
         </ol>
       </section>

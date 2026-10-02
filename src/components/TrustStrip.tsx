@@ -3,8 +3,8 @@ import { IconCalendar, IconLock, IconReceipt, IconVideo } from './Icons';
 const ITEMS = [
   { icon: IconLock, text: 'Veilig betalen via Stripe, met iDEAL of kaart' },
   { icon: IconReceipt, text: 'Direct een factuur met btw' },
-  { icon: IconCalendar, text: 'Binnen 14 dagen op de muur' },
-  { icon: IconVideo, text: 'Jouw logo in beeld in onze video' },
+  { icon: IconCalendar, text: 'Foto als bewijs van plaatsing' },
+  { icon: IconVideo, text: '3 maanden gegarandeerd op de muur' },
 ];
 
 export function TrustStrip() {

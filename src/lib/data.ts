@@ -19,11 +19,11 @@ export const DEFAULT_CONFIG: SiteConfig = {
   veiling_eind: '2026-10-18T20:00:00+02:00',
   startbod_eur: 5000,
   min_verhoging_eur: 250,
-  looptijd: 'zolang het Hoekhuus van ons is, en minimaal 2 jaar',
-  bedrijfsnaam: 'Het Hoekhuus',
-  adres: '',
+  looptijd: '3 maanden na plaatsing',
+  bedrijfsnaam: 'Het Hoekhuus (KWW media)',
+  adres: 'Groenloseweg 63, 7101 AD Winterswijk',
   kvk: '',
-  btw_nummer: '',
+  btw_nummer: 'NL808508453B01',
   contact_email: '',
   tiktok_url: 'https://www.tiktok.com/@hethoekhuis',
   instagram_url: 'https://www.instagram.com/hethoekhuus/',
@@ -152,7 +152,8 @@ export function parseConfig(rows: RawRow[]): SiteConfig {
   for (const row of rows) {
     const key = str(row.key) as keyof SiteConfig;
     const value = str(row.value);
-    if (!(key in DEFAULT_CONFIG) || value === '') continue;
+    // Lege velden en nog niet ingevulde plekken ([INVULLEN]) negeren: dan geldt de standaardwaarde.
+    if (!(key in DEFAULT_CONFIG) || value === '' || value.includes('INVULLEN')) continue;
     if (key === 'startbod_eur' || key === 'min_verhoging_eur') {
       const n = num(value);
       if (Number.isFinite(n) && n >= 0) config[key] = n;
