@@ -18,6 +18,7 @@
     "stripe:links": "node scripts/create-payment-links.mjs"
   },
   "dependencies": {
+    "@fontsource/montserrat": "^5.3.0",
     "marked": "^18.0.14",
     "papaparse": "^5.7.0",
     "react": "^19.3.0",

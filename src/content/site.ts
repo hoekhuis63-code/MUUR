@@ -1,8 +1,8 @@
 // Vaste teksten op de homepagina. Pas hier aan; bedrijfsgegevens en links komen uit het config-tabblad.
 
 export const ABOUT = [
-  'Wij zijn Het Hoekhuus: Tycho, Boris, Pim en Noah. Samen met vrienden kochten we een oud café van €500.000, en we hebben een weddenschap: we verbouwen het voor minder dan €100.000.',
-  'Elke klus, elke tegenvaller en elk bedrag delen we op TikTok, Instagram en Facebook. Onze eerste video werd meer dan een miljoen keer bekeken. Deze muur komt in beeld, en jouw logo dus ook.',
+  'Vier vrienden, één pand van €500.000. Wij zijn Tycho, Boris, Pim en Noah, en samen met vrienden kochten we een oud café op de hoek. Onze weddenschap: we verbouwen het voor minder dan €100.000.',
+  'Of dat lukt, zie je op TikTok, Instagram en Facebook. Elke klus, elke tegenvaller en elk bedrag. Deze muur komt regelmatig in beeld, dus jouw logo ook.',
 ];
 
 export const SIGN_OFF = 'Volg ons avontuur, volg Het Hoekhuus.';

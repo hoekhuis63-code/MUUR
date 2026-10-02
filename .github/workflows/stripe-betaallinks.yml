@@ -1,0 +1,55 @@
+# Maakt de Stripe-betaallinks aan zonder dat je iets hoeft te installeren.
+# GitHub > Actions > "Stripe-betaallinks" > Run workflow. Download daarna het bestand
+# spots_met_links.csv onder "Artifacts" en plak de kolom betaallink in de sheet.
+name: Stripe-betaallinks
+
+on:
+  workflow_dispatch:
+    inputs:
+      modus:
+        description: 'test of live'
+        type: choice
+        options: [test, live]
+        default: test
+      proefdraai:
+        description: 'Alleen proefdraaien (maakt niets aan in Stripe)'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Actuele vakken uit de Google Sheet halen
+        env:
+          SPOTS_CSV_URL: ${{ vars.VITE_SPOTS_CSV_URL }}
+        run: |
+          if [ -n "$SPOTS_CSV_URL" ]; then
+            curl -fsSL "$SPOTS_CSV_URL" -o spots.csv
+            echo "Vakken gelezen uit de gepubliceerde sheet."
+          else
+            cp data/spots.csv spots.csv
+            echo "Geen VITE_SPOTS_CSV_URL ingesteld: data/spots.csv gebruikt."
+          fi
+          npm run -s check:layout -- spots.csv
+      - name: Betaallinks maken
+        env:
+          STRIPE_SECRET_KEY: ${{ inputs.modus == 'live' && secrets.STRIPE_SECRET_KEY_LIVE || secrets.STRIPE_SECRET_KEY_TEST }}
+          SITE_URL: ${{ vars.SITE_URL || 'https://hethoekhuus.nl' }}
+        run: node scripts/create-payment-links.mjs spots.csv ${{ inputs.proefdraai && '--dry-run' || '' }}
+      - name: Resultaat bewaren
+        if: always() && !inputs.proefdraai
+        uses: actions/upload-artifact@v4
+        with:
+          name: spots_met_links-${{ inputs.modus }}
+          path: spots_met_links.csv
+          if-no-files-found: ignore

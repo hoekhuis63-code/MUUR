@@ -11,7 +11,7 @@ export function Progress({ spots }: { spots: Spot[] }) {
         {euro(raised)} opgehaald · {sold} van {total} vakken verkocht
       </p>
       <div
-        className="h-3 overflow-hidden rounded-full bg-stone-300"
+        className="h-3 overflow-hidden rounded-full bg-white"
         role="progressbar"
         aria-label="Verkochte vakken"
         aria-valuemin={0}
@@ -19,7 +19,7 @@ export function Progress({ spots }: { spots: Spot[] }) {
         aria-valuenow={sold}
       >
         <div
-          className="h-full rounded-full bg-red-600 transition-[width]"
+          className="h-full rounded-full bg-gradient-to-r from-oranje-licht to-merk-oranje transition-[width]"
           style={{ width: `${Math.max(percent, sold > 0 ? 2 : 0)}%` }}
         />
       </div>

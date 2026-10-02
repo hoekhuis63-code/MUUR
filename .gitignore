@@ -7,3 +7,4 @@ spots_met_links.csv
 *.log
 .DS_Store
 .vercel
+!.env.production

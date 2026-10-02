@@ -118,7 +118,7 @@ function idempotencyKey(row, kind) {
 
 function productName(row) {
   const label = TYPE_LABELS[row.type] ?? row.type;
-  return `Vak ${row.id} – ${label} ${row.w_cm} x ${row.h_cm} cm op de muur van Het Hoekhuus`;
+  return `Vak ${row.id} · ${label} ${row.w_cm} x ${row.h_cm} cm op de muur van Het Hoekhuus`;
 }
 
 function paymentLinkParams(row, priceId) {

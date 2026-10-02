@@ -8,9 +8,9 @@ export function Footer({ config }: { config: SiteConfig }) {
   ].filter(Boolean);
 
   return (
-    <footer className="mt-16 bg-stone-900 px-4 py-10 text-stone-300">
+    <footer className="mt-16 bg-navy px-4 py-10 text-blue-100">
       <div className="mx-auto max-w-5xl space-y-3 text-sm">
-        <p className="text-base font-bold text-white">{config.bedrijfsnaam}</p>
+        <p className="font-display text-base font-bold text-white">{config.bedrijfsnaam}</p>
         {details.length > 0 && <p>{details.join(' · ')}</p>}
         {config.contact_email && (
           <p>
@@ -27,7 +27,7 @@ export function Footer({ config }: { config: SiteConfig }) {
             Privacy
           </a>
         </nav>
-        <p className="text-stone-400">
+        <p className="text-blue-200">
           Alle prijzen zijn exclusief btw. Deze site gebruikt geen cookies.
         </p>
       </div>

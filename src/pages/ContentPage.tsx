@@ -8,7 +8,7 @@ function ContentPage({ markdown }: { markdown: string }) {
   const html = useMemo(() => marked.parse(markdown, { async: false }), [markdown]);
   return (
     <main className="mx-auto max-w-2xl px-4 py-10">
-      <a href="/" className="font-semibold text-red-700 underline">
+      <a href="/" className="font-semibold text-oranje underline">
         ← Muur van Het Hoekhuus
       </a>
       <article className="prose-page mt-6" dangerouslySetInnerHTML={{ __html: html }} />

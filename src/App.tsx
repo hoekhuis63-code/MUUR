@@ -9,9 +9,9 @@ const Voorwaarden = lazy(() =>
 const Privacy = lazy(() => import('./pages/ContentPage').then((m) => ({ default: m.Privacy })));
 
 const TITLES: Record<string, string> = {
-  '/bedankt': 'Bedankt – Muur van Het Hoekhuus',
-  '/voorwaarden': 'Voorwaarden – Muur van Het Hoekhuus',
-  '/privacy': 'Privacy – Muur van Het Hoekhuus',
+  '/bedankt': 'Bedankt | Muur van Het Hoekhuus',
+  '/voorwaarden': 'Voorwaarden | Muur van Het Hoekhuus',
+  '/privacy': 'Privacy | Muur van Het Hoekhuus',
 };
 
 export function App() {
@@ -45,7 +45,7 @@ export function App() {
     default:
       return (
         <main className="mx-auto max-w-2xl px-4 py-16">
-          <h1 className="text-3xl font-extrabold">Pagina niet gevonden</h1>
+          <h1 className="font-display text-3xl font-extrabold text-navy">Pagina niet gevonden</h1>
           <p className="mt-3">
             <a href="/" className="underline">
               Naar de muur

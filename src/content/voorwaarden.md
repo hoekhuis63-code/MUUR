@@ -1,6 +1,6 @@
-# Algemene voorwaarden – Muur van Het Hoekhuus
+# Algemene voorwaarden Muur van Het Hoekhuus
 
-> **Concept – laten controleren door een jurist/boekhouder voor livegang.**
+> **Concept: laten controleren door een jurist/boekhouder voor livegang.**
 
 Versie: [INVULLEN datum]
 

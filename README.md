@@ -1,6 +1,8 @@
 # Muur van Het Hoekhuus
 
-Met vrienden kochten we een voormalig café van €500.000 en verbouwen we het voor minder dan €100.000 — en dat delen we op TikTok ([@hethoekhuis](https://www.tiktok.com/@hethoekhuis)), Instagram ([@hethoekhuus](https://www.instagram.com/hethoekhuus)) en Facebook. Op een echte binnenmuur van **320 x 230 cm** verkopen we reclamevakken: het logo van de koper komt er als matte vinylsticker op. Deze site (hethoekhuus.nl) toont de muur, de vrije vakken, de betaallinks en de veiling van The Spot.
+> **Snel starten:** zie [JOUW-TAKEN.md](JOUW-TAKEN.md) voor de stappen die alleen jij kunt doen. Openbare instellingen (CSV-links, Tally-ID's) staan in `.env.production` in de repo; Vercel heeft dan geen env-variabelen nodig. Betaallinks maken kan ook zonder installatie via GitHub Actions (workflow _Stripe-betaallinks_, secrets `STRIPE_SECRET_KEY_TEST` / `STRIPE_SECRET_KEY_LIVE`, optionele variabelen `VITE_SPOTS_CSV_URL` en `SITE_URL`). De beheersheet staat in Drive > 0.5 Content > _Muur van Het Hoekhuus · beheer_.
+
+Met vrienden kochten we een voormalig café van €500.000 en verbouwen we het voor minder dan €100.000: en dat delen we op TikTok ([@hethoekhuis](https://www.tiktok.com/@hethoekhuis)), Instagram ([@hethoekhuus](https://www.instagram.com/hethoekhuus)) en Facebook. Op een echte binnenmuur van **320 x 230 cm** verkopen we reclamevakken: het logo van de koper komt er als matte vinylsticker op. Deze site (hethoekhuus.nl) toont de muur, de vrije vakken, de betaallinks en de veiling van The Spot.
 
 Alle prijzen zijn **exclusief btw (21%)**.
 
@@ -61,7 +63,7 @@ Vite-variabelen worden **tijdens de build** in de site gebakken. Wijzig je ze in
 | `VITE_TALLY_LOGO_FORM_ID` | `.env` + Vercel | ID van het logo-formulier (stuk na `tally.so/r/`)           |
 | `VITE_TALLY_BID_FORM_ID`  | `.env` + Vercel | ID van het biedformulier                                    |
 | `VITE_PLAUSIBLE_DOMAIN`   | `.env` + Vercel | Optioneel, bijv. `hethoekhuus.nl` (cookieloze statistiek)   |
-| `STRIPE_SECRET_KEY`       | alleen `.env`   | `sk_test_…` of `sk_live_…` — **nooit** in Vercel of git     |
+| `STRIPE_SECRET_KEY`       | alleen `.env`   | `sk_test_…` of `sk_live_…`: **nooit** in Vercel of git      |
 | `SITE_URL`                | alleen `.env`   | `https://hethoekhuus.nl` (voor de redirect naar `/bedankt`) |
 
 ## Google Sheet inrichten
@@ -130,7 +132,7 @@ Het formulier-ID is het stuk na `tally.so/r/`.
 
 1. Maak een formulier met de velden:
    - Naam zoals op de muur
-   - Logo-upload (bij voorkeur svg, pdf, ai of eps; png mag als het minimaal 150 dpi op ware grootte is — een tegel van 20 cm = 1.200 px)
+   - Logo-upload (bij voorkeur svg, pdf, ai of eps; png mag als het minimaal 150 dpi op ware grootte is: een tegel van 20 cm = 1.200 px)
    - Website
    - Contactpersoon
    - E-mail
@@ -160,7 +162,7 @@ Het formulier-ID is het stuk na `tally.so/r/`.
 
 Het script maakt voor elk vak met status `vrij` en een lege `betaallink`:
 
-- een product `Vak <ID> – <type> <w> x <h> cm op de muur van Het Hoekhuus` met een EUR-prijs (btw exclusief);
+- een product `Vak <ID> · <type> <w> x <h> cm op de muur van Het Hoekhuus` met een EUR-prijs (btw exclusief);
 - een Payment Link die na **1 voltooide betaling** sluit (melding "Dit vak is net verkocht…"), doorstuurt naar `<SITE_URL>/bedankt?vak=<ID>&sessie={CHECKOUT_SESSION_ID}`, een factuur maakt, bedrijfsnaam, btw-nummer en factuuradres vraagt, akkoord op de voorwaarden verplicht maakt en een keuzelijst "Waar zag je ons?" toont.
 
 Het script is idempotent en schrijft `spots_met_links.csv` (staat in `.gitignore`).
@@ -183,11 +185,11 @@ De site plakt `?client_reference_id=<ID>-<bron>&locale=nl` achter de betaallink.
 
 ### Statussen
 
-- `vrij` — te koop, betaallink zichtbaar
-- `bezet` — betaald, logo nog niet op de muur
-- `verkocht` — logo hangt
-- `veiling` — The Spot, biedblok zichtbaar
-- `geblokkeerd` — niet te koop (bijv. X1)
+- `vrij`: te koop, betaallink zichtbaar
+- `bezet`: betaald, logo nog niet op de muur
+- `verkocht`: logo hangt
+- `veiling`: The Spot, biedblok zichtbaar
+- `geblokkeerd`: niet te koop (bijv. X1)
 
 ### Na een betaling
 

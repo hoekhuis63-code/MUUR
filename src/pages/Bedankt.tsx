@@ -53,11 +53,11 @@ export function Bedankt() {
 
   return (
     <main className="mx-auto max-w-2xl space-y-8 px-4 py-10">
-      <a href="/" className="font-semibold text-red-700 underline">
+      <a href="/" className="font-semibold text-oranje underline">
         ← Muur van Het Hoekhuus
       </a>
       <header className="space-y-3">
-        <h1 className="text-4xl font-extrabold">
+        <h1 className="font-display text-4xl font-extrabold text-navy">
           {vak ? `Gelukt! Vak ${vak} is van jou` : 'Gelukt! Bedankt voor je aankoop'}
         </h1>
         <p className="text-lg text-stone-700">

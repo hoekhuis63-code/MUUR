@@ -10,7 +10,7 @@ export function HowItWorks() {
         {STEPS.map((step, i) => (
           <li key={step.title} className="rounded-xl border border-stone-300 bg-white p-4">
             <span
-              className="grid h-8 w-8 place-items-center rounded-full bg-red-600 font-bold text-white"
+              className="grid h-8 w-8 place-items-center rounded-full bg-oranje font-bold text-white"
               aria-hidden="true"
             >
               {i + 1}

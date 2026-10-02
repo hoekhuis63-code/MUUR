@@ -65,26 +65,39 @@ export function Home() {
 
   return (
     <>
-      <main className="mx-auto max-w-5xl space-y-14 px-4 pt-8 pb-8 sm:pt-12">
-        <header className="space-y-4">
-          <p className="font-semibold text-red-700">Muur van Het Hoekhuus</p>
-          <h1 className="text-4xl leading-tight font-extrabold tracking-tight sm:text-5xl">
-            Koop een stukje van het Hoekhuus
-          </h1>
-          <p className="max-w-2xl text-lg text-stone-700">
-            Zet je bedrijfslogo op onze echte muur van 320 x 230 cm, midden in de verbouwing die
-            duizenden mensen volgen. Kies een vak, betaal en wij plakken je logo erop.
-          </p>
-          {data ? (
-            <Progress spots={spots} />
-          ) : (
-            <div className="h-[4.5rem] animate-pulse rounded bg-stone-200 sm:h-11" />
-          )}
-        </header>
-
+      <header className="bg-lichtblauw">
+        <div className="mx-auto flex max-w-5xl flex-col gap-4 px-4 pt-4 pb-8 sm:flex-row sm:items-center sm:gap-8 sm:pt-8">
+          <img
+            src="/logo-320.webp"
+            srcSet="/logo-320.webp 320w, /logo-640.webp 640w"
+            sizes="(min-width: 640px) 260px, 200px"
+            width={320}
+            height={320}
+            alt="Het Hoekhuus"
+            fetchPriority="high"
+            className="mx-auto h-auto w-[200px] shrink-0 sm:mx-0 sm:w-[260px]"
+          />
+          <div className="space-y-4">
+            <h1 className="font-display text-4xl leading-tight font-extrabold tracking-tight text-navy sm:text-5xl">
+              Koop een stukje van het Hoekhuus
+            </h1>
+            <p className="max-w-2xl text-lg text-ink">
+              Vier vrienden, één pand van €500.000. We verbouwen het voor minder dan €100.000 en
+              deze muur van 320 x 230 cm helpt daarbij. Kies een vak, betaal, en wij plakken jouw
+              logo erop.
+            </p>
+            {data ? (
+              <Progress spots={spots} />
+            ) : (
+              <div className="h-[4.5rem] animate-pulse rounded bg-white/70 sm:h-11" />
+            )}
+          </div>
+        </div>
+      </header>
+      <main className="mx-auto max-w-5xl space-y-14 px-4 pt-10 pb-8">
         <section ref={mapRef} aria-labelledby="muur-titel" className="scroll-mt-2 space-y-3">
           <div className="flex items-end justify-between gap-3">
-            <h2 id="muur-titel" className="text-2xl font-extrabold">
+            <h2 id="muur-titel" className="font-display text-2xl font-extrabold text-navy">
               Kies je vak
             </h2>
             {state.status !== 'error' && (
@@ -100,7 +113,7 @@ export function Home() {
                     aria-pressed={mode === m}
                     disabled={!data}
                     onClick={() => setMode(m)}
-                    className="min-h-10 rounded-full px-4 font-semibold capitalize aria-pressed:bg-stone-900 aria-pressed:text-white"
+                    className="min-h-10 rounded-full px-4 font-semibold capitalize aria-pressed:bg-navy aria-pressed:text-white"
                   >
                     {m}
                   </button>

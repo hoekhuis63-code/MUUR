@@ -1,6 +1,6 @@
 # Privacyverklaring
 
-> **Concept – laten controleren door een jurist/boekhouder voor livegang.**
+> **Concept: laten controleren door een jurist/boekhouder voor livegang.**
 
 Versie: [INVULLEN datum]
 
@@ -35,11 +35,11 @@ Versie: [INVULLEN datum]
 
 We werken met deze partijen, die gegevens namens ons verwerken:
 
-- **Stripe** – betalingen en facturen
-- **Tally** – formulieren voor logo's en biedingen
-- **Google** – Google Sheets en Drive, voor ons beheer
-- **Vercel** – hosting van de website
-- **Plausible** – cookieloze statistiek zonder persoonsgegevens, gehost in de EU
+- **Stripe**: betalingen en facturen
+- **Tally**: formulieren voor logo's en biedingen
+- **Google**: Google Sheets en Drive, voor ons beheer
+- **Vercel**: hosting van de website
+- **Plausible**: cookieloze statistiek zonder persoonsgegevens, gehost in de EU
 
 ## Wat er openbaar op de site staat
 
@@ -62,4 +62,4 @@ Ben je niet tevreden over hoe we met je gegevens omgaan, dan kun je een klacht i
 
 ## Contact
 
-[INVULLEN bedrijfsnaam] – [INVULLEN e-mailadres] – [INVULLEN adres]
+[INVULLEN bedrijfsnaam] · [INVULLEN e-mailadres] · [INVULLEN adres]

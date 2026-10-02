@@ -23,12 +23,12 @@ export function Countdown({ end, now }: { end: number; now: number }) {
       {units.map(([value, label]) => (
         <div
           key={label}
-          className="min-w-14 rounded-lg bg-stone-900 px-2 py-1.5 text-center text-white"
+          className="min-w-14 rounded-lg bg-white/10 px-2 py-1.5 text-center text-white"
         >
           <div className="text-2xl font-extrabold tabular-nums" aria-hidden="true">
             {value}
           </div>
-          <div className="text-xs text-stone-300" aria-hidden="true">
+          <div className="text-xs text-blue-100" aria-hidden="true">
             {label}
           </div>
         </div>

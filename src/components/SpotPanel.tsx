@@ -67,7 +67,7 @@ export function SpotPanel({ spot, onClose, bidFormUrl, auction }: Props) {
             id="spot-panel-title"
             ref={headingRef}
             tabIndex={-1}
-            className="text-3xl font-extrabold outline-none"
+            className="font-display text-3xl font-extrabold text-navy outline-none"
           >
             Vak {spot.id}
           </h2>
