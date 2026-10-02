@@ -177,11 +177,40 @@ async function createLink(row) {
     },
     { idempotencyKey: idempotencyKey(row, 'price') },
   );
-  const link = await stripe.paymentLinks.create(paymentLinkParams(row, price.id), {
-    idempotencyKey: idempotencyKey(row, 'link'),
-  });
-  return link.url;
+  try {
+    const link = await stripe.paymentLinks.create(paymentLinkParams(row, price.id), {
+      idempotencyKey: idempotencyKey(row, 'link'),
+    });
+    return link.url;
+  } catch (err) {
+    // In een Stripe-sandbox is de voorwaarden-URL niet in te stellen. Alleen in testmodus maken
+    // we de link dan zonder verplicht vinkje, met de voorwaarden als tekst bij de betaalknop.
+    if (mode !== 'test' || !isTermsOfServiceError(err)) throw err;
+    const params = paymentLinkParams(row, price.id);
+    delete params.consent_collection;
+    const link = await stripe.paymentLinks.create(
+      {
+        ...params,
+        custom_text: {
+          submit: {
+            message: `Door te betalen ga je akkoord met onze algemene voorwaarden: ${siteUrl}/voorwaarden`,
+          },
+        },
+      },
+      { idempotencyKey: idempotencyKey(row, 'link-zonder-vinkje') },
+    );
+    if (!tosFallbackShown) {
+      tosFallbackShown = true;
+      console.log(
+        'ℹ Testmodus zonder voorwaarden-URL in Stripe: links gemaakt zonder verplicht vinkje,\n' +
+          '  met de voorwaarden als tekst bij de betaalknop. In livemodus is het vinkje verplicht.',
+      );
+    }
+    return link.url;
+  }
 }
+
+let tosFallbackShown = false;
 
 function isTermsOfServiceError(err) {
   const text = `${err?.param ?? ''} ${err?.message ?? ''}`;
