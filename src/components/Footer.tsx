@@ -20,7 +20,7 @@ export function Footer({ config }: { config: SiteConfig }) {
         <div className="space-y-3">
           <div className="flex items-center gap-3">
             <img
-              src="/favicon-48.png"
+              src="/icon-96.png"
               alt=""
               width={40}
               height={40}

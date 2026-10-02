@@ -6,7 +6,7 @@ export function SiteNav() {
     >
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between gap-3 px-4">
         <a href="/" className="flex items-center gap-2.5" aria-label="Het Hoekhuus, naar de muur">
-          <img src="/favicon-48.png" alt="" width={36} height={36} className="rounded-lg" />
+          <img src="/icon-96.png" alt="" width={36} height={36} className="rounded-lg" />
           <span className="font-display text-lg leading-none font-extrabold text-navy">
             Het Hoekhuus
             <span className="block text-xs font-bold tracking-wider text-oranje uppercase">

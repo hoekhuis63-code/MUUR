@@ -131,7 +131,7 @@ body {
     @apply rounded-3xl border border-navy/10 bg-white shadow-[0_10px_30px_-12px_rgba(7,52,89,0.25)];
   }
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-sm font-bold tracking-wider text-oranje uppercase;
+    @apply inline-flex items-center gap-2 text-sm font-bold tracking-wider text-oranje-donker uppercase;
   }
   /* De oranje streepjes uit het logo ("— HUUS —"). */
   .eyebrow::before,

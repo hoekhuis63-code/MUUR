@@ -32,7 +32,7 @@ export function About({ config }: { config: SiteConfig }) {
               <p key={p}>{p}</p>
             ))}
           </div>
-          <p className="mt-4 font-display text-lg font-extrabold text-oranje">{SIGN_OFF}</p>
+          <p className="mt-4 font-display text-lg font-extrabold text-oranje-donker">{SIGN_OFF}</p>
           {socials.length > 0 && (
             <ul className="mt-5 flex flex-wrap gap-2">
               {socials.map((s) => (
