@@ -8,3 +8,4 @@ spots_met_links.csv
 .DS_Store
 .vercel
 !.env.production
+.env*

@@ -208,6 +208,7 @@ export async function loadWallData(previous?: WallData): Promise<WallData> {
     }
   }
   if (spots.length === 0) throw new Error('Geen geldige vakken gevonden');
+  spots = applySold(spots, await loadSold());
 
   return {
     spots,
@@ -220,6 +221,40 @@ export async function loadWallData(previous?: WallData): Promise<WallData> {
     updatedAt:
       spotsResult.status === 'fulfilled' ? new Date() : (previous?.updatedAt ?? new Date()),
   };
+}
+
+interface SoldEntry {
+  vak: string;
+  koper: string;
+  verkocht_op: string;
+}
+
+/** Betaalde vakken uit Stripe (via /api/verkocht). Faalt stil: dan blijft de stand uit spots.json. */
+async function loadSold(): Promise<SoldEntry[]> {
+  try {
+    const res = await fetch('/api/verkocht', { cache: 'no-store' });
+    if (!res.ok) return [];
+    const body = (await res.json()) as { verkocht?: SoldEntry[] };
+    return Array.isArray(body.verkocht) ? body.verkocht : [];
+  } catch {
+    return [];
+  }
+}
+
+/** Zet betaalde vakken op verkocht; wat al verkocht staat (met logo) blijft ongemoeid. */
+function applySold(spots: Spot[], sold: SoldEntry[]): Spot[] {
+  if (sold.length === 0) return spots;
+  const byVak = new Map(sold.map((s) => [s.vak, s]));
+  return spots.map((spot) => {
+    const hit = byVak.get(spot.id);
+    if (!hit || spot.status === 'verkocht') return spot;
+    return {
+      ...spot,
+      status: 'verkocht',
+      koper: spot.koper || hit.koper || 'Verkocht',
+      verkocht_op: spot.verkocht_op || hit.verkocht_op,
+    };
+  });
 }
 
 export function isTaken(spot: Spot): boolean {
