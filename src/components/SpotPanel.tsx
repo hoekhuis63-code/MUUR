@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { claimUrl, getSource, trackEvent } from '../lib/claim';
 import { STATUS_LABELS, TYPE_LABELS, euro, size } from '../lib/format';
 import type { Spot } from '../lib/types';
+import { WallPhoto } from './WallPhoto';
 
 interface Props {
   spot: Spot;
@@ -81,6 +82,8 @@ export function SpotPanel({ spot, onClose, bidFormUrl, auction }: Props) {
           ×
         </button>
       </div>
+
+      <WallPhoto spot={spot} />
 
       <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-base">
         <dt className="text-stone-600">Maat</dt>

@@ -1,15 +1,19 @@
 import type { SpotType } from './types';
 
-/** Vulkleur en tekstkleur per prijsgroep (contrast ≥ 4.5:1). */
+const FREE = { fill: '#ffffff', text: '#073459' };
+
+/** Vulkleur en tekstkleur per prijsgroep: rustig, één kleur voor vrije vakken. */
 export const TYPE_COLORS: Record<SpotType, { fill: string; text: string }> = {
-  spot: { fill: '#2b6cb0', text: '#ffffff' },
-  xl: { fill: '#ee7330', text: '#1f2429' },
-  l: { fill: '#fd9203', text: '#1f2429' },
-  m: { fill: '#f5c518', text: '#1f2429' },
-  b: { fill: '#5cc17a', text: '#1f2429' },
-  t: { fill: '#2b6cb0', text: '#ffffff' },
-  x: { fill: '#d6d3d1', text: '#1c1917' },
+  spot: { fill: '#073459', text: '#ffffff' },
+  xl: FREE,
+  l: FREE,
+  m: FREE,
+  b: FREE,
+  t: FREE,
+  x: { fill: '#f1efeb', text: '#57534e' },
 };
 
-export const TAKEN_COLOR = { fill: '#a8a29e', text: '#1c1917' };
+export const TAKEN_COLOR = { fill: '#d6d3d1', text: '#44403c' };
 export const WALL_COLOR = '#f7f3ec';
+export const LINE_COLOR = '#073459';
+export const SELECTED_COLOR = '#e8570f';

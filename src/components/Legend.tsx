@@ -1,24 +1,15 @@
 import { TAKEN_COLOR, TYPE_COLORS } from '../lib/colors';
-import { TYPE_LABELS, euro } from '../lib/format';
-import type { Spot, SpotType } from '../lib/types';
-
-const ORDER: SpotType[] = ['spot', 'xl', 'l', 'm', 'b', 't'];
+import { euro } from '../lib/format';
+import type { Spot } from '../lib/types';
 
 export function Legend({ spots }: { spots: Spot[] }) {
-  const items: { key: string; color: string; label: string }[] = ORDER.flatMap((type) => {
-    const spot = spots.find((s) => s.type === type);
-    if (!spot) return [];
-    const price = type === 'spot' ? `vanaf ${euro(spot.prijs_eur)}` : euro(spot.prijs_eur);
-    return [
-      {
-        key: type,
-        color: TYPE_COLORS[type].fill,
-        label: `${TYPE_LABELS[type]} ${spot.w_cm}x${spot.h_cm} · ${price}`,
-      },
-    ];
-  });
-  items.push({ key: 'bezet', color: TAKEN_COLOR.fill, label: 'Bezet' });
-  items.push({ key: 'verkocht', color: '#ffffff', label: 'Verkocht (logo)' });
+  const free = spots.filter((s) => s.status === 'vrij' && s.prijs_eur > 0);
+  const min = free.length ? Math.min(...free.map((s) => s.prijs_eur)) : 0;
+  const items: { key: string; color: string; label: string }[] = [
+    { key: 'vrij', color: TYPE_COLORS.t.fill, label: `Beschikbaar · vanaf ${euro(min)}` },
+    { key: 'spot', color: TYPE_COLORS.spot.fill, label: 'The Spot · veiling' },
+    { key: 'bezet', color: TAKEN_COLOR.fill, label: 'Bezet' },
+  ];
 
   return (
     <ul className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-stone-700" aria-label="Legenda">

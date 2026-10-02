@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { KeyboardEvent, PointerEvent } from 'react';
 import { WALL_HEIGHT_CM, WALL_WIDTH_CM } from '../lib/data';
-import { TAKEN_COLOR, TYPE_COLORS, WALL_COLOR } from '../lib/colors';
+import { TAKEN_COLOR, TYPE_COLORS, WALL_COLOR, LINE_COLOR, SELECTED_COLOR } from '../lib/colors';
 import { ariaLabel, euro } from '../lib/format';
 import type { Spot } from '../lib/types';
 
@@ -358,8 +358,8 @@ function SpotShape({ spot, pxPerCm, selected, auctionLabel, onActivate, onKey }:
         width={w - 1}
         height={h - 1}
         fill={status === 'geblokkeerd' ? 'url(#hatch)' : colors.fill}
-        stroke={selected ? '#111' : '#1c1917'}
-        strokeWidth={selected ? 1.6 : 0.6}
+        stroke={selected ? SELECTED_COLOR : LINE_COLOR}
+        strokeWidth={selected ? 1.8 : 0.35}
       />
       {showLogo && (
         <image
@@ -387,10 +387,21 @@ function SpotLabel(props: {
   color: string;
   pxPerCm: number;
 }) {
-  const { x, y, w, h, lines, color, pxPerCm } = props;
+  const { x, y, w, h, color, pxPerCm } = props;
+  let { lines } = props;
   if (lines.length === 0) return null;
-  const longest = Math.max(...lines.map((l) => l.length));
-  const size = Math.min((h * 0.8) / (lines.length * 1.2), ((w - 2) / longest) * 1.7, 12);
+  const fit = (ls: string[]) =>
+    Math.min(
+      (h * 0.8) / (ls.length * 1.2),
+      ((w - 2) / Math.max(...ls.map((l) => l.length))) * 1.6,
+      10,
+    );
+  let size = fit(lines);
+  // Past de prijs er niet leesbaar bij, toon dan alleen het nummer.
+  if (lines.length > 1 && size * pxPerCm < MIN_FONT_PX) {
+    lines = lines.slice(0, 1);
+    size = fit(lines);
+  }
   const visible = lines.filter((_, i) => i === 0 || size * pxPerCm >= MIN_FONT_PX);
   if (size * pxPerCm < MIN_FONT_PX) return null;
   const top = y + h / 2 - ((visible.length - 1) * size * 1.15) / 2;

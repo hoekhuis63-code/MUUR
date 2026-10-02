@@ -23,7 +23,7 @@ export function Hero({ progress }: { progress: ReactNode }) {
           </div>
           <dl className="grid grid-cols-3 gap-2 pt-2">
             {[
-              ['95', 'vakken'],
+              ['94', 'vakken'],
               ['€99', 'vanaf, excl. btw'],
               ['1,1M+', 'views op onze start'],
             ].map(([value, label]) => (
