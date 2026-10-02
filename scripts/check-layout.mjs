@@ -11,7 +11,9 @@ for (const file of files) {
   const spots = [];
   const errors = [];
   for (const row of raw) {
-    const { spot, error } = toSpot(Object.fromEntries(Object.entries(row).map(([k, v]) => [k, String(v ?? '')])));
+    const { spot, error } = toSpot(
+      Object.fromEntries(Object.entries(row).map(([k, v]) => [k, String(v ?? '')])),
+    );
     if (error) errors.push(error);
     else spots.push(spot);
   }
@@ -28,7 +30,7 @@ for (const file of files) {
     failed = true;
     for (const e of errors) console.error(`  ✗ ${e}`);
   } else {
-    console.log('  ✓ geen overlap, alles binnen de muur, geen dubbele ID\'s');
+    console.log("  ✓ geen overlap, alles binnen de muur, geen dubbele ID's");
   }
 }
 

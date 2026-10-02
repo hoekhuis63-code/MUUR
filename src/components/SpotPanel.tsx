@@ -7,9 +7,11 @@ interface Props {
   spot: Spot;
   onClose: () => void;
   bidFormUrl?: string;
+  /** Bijv. "Hoogste bod €5.250" voor The Spot. */
+  auction?: { label: string; amount: number };
 }
 
-export function SpotPanel({ spot, onClose, bidFormUrl }: Props) {
+export function SpotPanel({ spot, onClose, bidFormUrl, auction }: Props) {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const [shareMessage, setShareMessage] = useState('');
 
@@ -83,9 +85,11 @@ export function SpotPanel({ spot, onClose, bidFormUrl }: Props) {
       <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-base">
         <dt className="text-stone-600">Maat</dt>
         <dd className="font-semibold">{size(spot)}</dd>
-        <dt className="text-stone-600">{isAuction ? 'Startbod' : 'Prijs'}</dt>
+        <dt className="text-stone-600">{isAuction && auction ? auction.label : 'Prijs'}</dt>
         <dd className="font-semibold">
-          {spot.status === 'geblokkeerd' ? 'volgt' : `${euro(spot.prijs_eur)} excl. btw`}
+          {spot.status === 'geblokkeerd'
+            ? 'volgt'
+            : `${euro(isAuction && auction ? auction.amount : spot.prijs_eur)} excl. btw`}
         </dd>
         <dt className="text-stone-600">Status</dt>
         <dd className="font-semibold">{STATUS_LABELS[spot.status]}</dd>

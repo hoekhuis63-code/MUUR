@@ -1,9 +1,12 @@
-import { useEffect } from 'react';
-import { Bedankt } from './pages/Bedankt';
-import { ContentPage } from './pages/ContentPage';
+import { Suspense, lazy, useEffect } from 'react';
 import { Home } from './pages/Home';
-import privacy from './content/privacy.md?raw';
-import voorwaarden from './content/voorwaarden.md?raw';
+
+// Alleen de homepage zit in de hoofdbundel; de andere pagina's laden apart.
+const Bedankt = lazy(() => import('./pages/Bedankt').then((m) => ({ default: m.Bedankt })));
+const Voorwaarden = lazy(() =>
+  import('./pages/ContentPage').then((m) => ({ default: m.Voorwaarden })),
+);
+const Privacy = lazy(() => import('./pages/ContentPage').then((m) => ({ default: m.Privacy })));
 
 const TITLES: Record<string, string> = {
   '/bedankt': 'Bedankt – Muur van Het Hoekhuus',
@@ -22,11 +25,23 @@ export function App() {
     case '/':
       return <Home />;
     case '/bedankt':
-      return <Bedankt />;
+      return (
+        <Suspense fallback={null}>
+          <Bedankt />
+        </Suspense>
+      );
     case '/voorwaarden':
-      return <ContentPage markdown={voorwaarden} />;
+      return (
+        <Suspense fallback={null}>
+          <Voorwaarden />
+        </Suspense>
+      );
     case '/privacy':
-      return <ContentPage markdown={privacy} />;
+      return (
+        <Suspense fallback={null}>
+          <Privacy />
+        </Suspense>
+      );
     default:
       return (
         <main className="mx-auto max-w-2xl px-4 py-16">

@@ -78,7 +78,7 @@ export function Home() {
           {data ? (
             <Progress spots={spots} />
           ) : (
-            <div className="h-10 animate-pulse rounded bg-stone-200" />
+            <div className="h-[4.5rem] animate-pulse rounded bg-stone-200 sm:h-11" />
           )}
         </header>
 
@@ -87,7 +87,7 @@ export function Home() {
             <h2 id="muur-titel" className="text-2xl font-extrabold">
               Kies je vak
             </h2>
-            {data && (
+            {state.status !== 'error' && (
               <div
                 className="flex rounded-full border border-stone-300 bg-white p-1"
                 role="group"
@@ -98,6 +98,7 @@ export function Home() {
                     key={m}
                     type="button"
                     aria-pressed={mode === m}
+                    disabled={!data}
                     onClick={() => setMode(m)}
                     className="min-h-10 rounded-full px-4 font-semibold capitalize aria-pressed:bg-stone-900 aria-pressed:text-white"
                   >
@@ -109,11 +110,11 @@ export function Home() {
           </div>
 
           {state.status === 'loading' && (
-            <div
-              className="aspect-[320/230] w-full animate-pulse rounded-lg bg-stone-200"
-              aria-label="Muur wordt geladen"
-              role="status"
-            />
+            <div role="status" aria-label="Muur wordt geladen">
+              <div className="aspect-[320/230] w-full animate-pulse rounded-lg bg-stone-200" />
+              {/* Zelfde hoogte als knoppen, uitleg en legenda: voorkomt verspringen. */}
+              <div className="h-56 sm:h-36" />
+            </div>
           )}
           {state.status === 'error' && (
             <div role="alert" className="rounded-lg border border-red-300 bg-red-50 p-5">
@@ -165,7 +166,18 @@ export function Home() {
       </main>
       <Footer config={config} />
       {selected && (
-        <SpotPanel key={selected.id} spot={selected} onClose={close} bidFormUrl={bidFormUrl} />
+        <SpotPanel
+          key={selected.id}
+          spot={selected}
+          onClose={close}
+          bidFormUrl={bidFormUrl}
+          auction={
+            auction && {
+              label: auction.highest ? 'Hoogste bod' : 'Startbod',
+              amount: auction.current,
+            }
+          }
+        />
       )}
     </>
   );
