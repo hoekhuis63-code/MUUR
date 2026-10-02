@@ -111,6 +111,7 @@ function idempotencyKey(row, kind) {
     toNumber(row.w_cm),
     toNumber(row.h_cm),
     siteUrl,
+    'stripe-tax',
   ]);
   const hash = createHash('sha256').update(fingerprint).digest('hex').slice(0, 12);
   return `muur-${mode}-${row.id}-${kind}-${hash}`;
@@ -153,6 +154,8 @@ function paymentLinkParams(row, priceId) {
         dropdown: { options: HERKOMST_OPTIES },
       },
     ],
+    // Stripe Tax: btw automatisch bovenop de prijs excl. btw (vereist Stripe Tax in het Dashboard).
+    automatic_tax: { enabled: true },
     metadata: { vak },
   };
 }
@@ -160,7 +163,8 @@ function paymentLinkParams(row, priceId) {
 async function createLink(row) {
   const vak = row.id;
   const product = await stripe.products.create(
-    { name: productName(row), metadata: { vak } },
+    // txcd_20030000 = 'General - Services' (Stripe Tax): 21% btw in NL, verlegd bij EU-bedrijven.
+    { name: productName(row), tax_code: 'txcd_20030000', metadata: { vak } },
     { idempotencyKey: idempotencyKey(row, 'product') },
   );
   const price = await stripe.prices.create(

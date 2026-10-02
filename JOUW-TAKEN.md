@@ -13,8 +13,9 @@ gebouwd. Werk de stappen in deze volgorde af; achter elke stap staat wat je teru
    betaallinks niet.
 4. **Instellingen > Branding**: upload het logo, merkkleur `#073459`, accentkleur `#e8570f`.
 5. **Instellingen > Facturen**: adres, KvK, btw-nummer, doorlopende factuurnummering.
-6. **Instellingen > Betaalmethoden**: iDEAL, kaarten, Bancontact, Apple Pay en Google Pay aan.
-7. **Ontwikkelaars > API-sleutels** (testmodus aan): kopieer de _geheime sleutel_ (`sk_test_...`).
+6. **Tax (Belastingen)**: zet Stripe Tax aan. Vul bij _Instellingen > Belastingen_ het vestigingsadres in, kies standaard "Prijzen exclusief belasting" en voeg bij _Registraties_ Nederland toe (btw-nummer). Zonder registratie rekent Stripe geen btw. Kosten: 0,5% per transactie.
+7. **Instellingen > Betaalmethoden**: iDEAL, kaarten, Bancontact, Apple Pay en Google Pay aan.
+8. **Ontwikkelaars > API-sleutels** (testmodus aan): kopieer de _geheime sleutel_ (`sk_test_...`).
    Plak die **nergens in een chat**. Zet hem in GitHub (stap 4).
 
 ## 2. Google Sheet invullen en publiceren (10 min)

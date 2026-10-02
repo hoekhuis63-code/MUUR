@@ -154,7 +154,7 @@ Het formulier-ID is het stuk na `tally.so/r/`.
 1. Maak een Stripe-account en rond de **verificatie** af (bedrijfsgegevens, bankrekening).
 2. **Branding** (Instellingen > Branding): logo, kleuren, icoon.
 3. **Facturen** (Instellingen > Facturering > Facturen): bedrijfsnaam, adres, KvK-nummer, btw-nummer en de factuurnummering instellen.
-4. **Btw:** de prijzen zijn exclusief btw (`tax_behavior: exclusive`). Stel 21% btw in, bijvoorbeeld als vast belastingtarief (tax rate) of via Stripe Tax. _Laat de juiste aanpak checken door de boekhouder._
+4. **Btw via Stripe Tax:** de prijzen zijn exclusief btw (`tax_behavior: exclusive`) en het script zet `automatic_tax` aan op elke betaallink (producten krijgen tax code `txcd_20030000`, algemene diensten). Zet Stripe Tax aan, vul je vestigingsadres in en registreer Nederland onder _Belastingen > Registraties_. Stripe rekent dan 21% btw voor Nederlandse kopers en verlegt de btw bij EU-bedrijven met een geldig btw-nummer. Zonder registratie wordt er **geen** btw gerekend. _Laat dit checken door de boekhouder._
 5. **Voorwaarden-URL:** zet `https://hethoekhuus.nl/voorwaarden` in Instellingen > Openbare gegevens (public details). Zonder deze URL kan het script geen akkoord op de voorwaarden verplicht maken.
 6. **Betaalmethoden** (Instellingen > Betaalmethoden): iDEAL, kaarten, Bancontact, Apple Pay en Google Pay aanzetten.
 
