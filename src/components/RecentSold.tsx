@@ -24,6 +24,9 @@ export function RecentSold({ spots }: { spots: Spot[] }) {
                       src={spot.logo_url}
                       alt={`Logo van ${spot.koper || spot.id}`}
                       loading="lazy"
+                      onError={(event) => {
+                        event.currentTarget.style.display = 'none';
+                      }}
                       className="max-h-full max-w-full object-contain"
                     />
                   ) : (

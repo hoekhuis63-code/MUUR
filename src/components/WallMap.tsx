@@ -200,7 +200,7 @@ export function WallMap({ spots, auctionAmount, hasBids, selectedId, onSelect }:
     setView((v) => zoomAround(v, factor, v.x + viewW / 2, v.y + viewH / 2));
 
   return (
-    <div className="relative">
+    <div>
       <svg
         ref={svgRef}
         viewBox={`${view.x} ${view.y} ${viewW} ${viewH}`}
@@ -238,7 +238,7 @@ export function WallMap({ spots, auctionAmount, hasBids, selectedId, onSelect }:
           />
         ))}
       </svg>
-      <div className="absolute right-2 bottom-2 flex gap-1">
+      <div className="mt-2 flex justify-end gap-2">
         <MapButton label="Inzoomen" onClick={() => zoomBy(1.6)} disabled={view.scale >= MAX_SCALE}>
           +
         </MapButton>
@@ -286,6 +286,8 @@ interface SpotShapeProps {
 
 function SpotShape({ spot, pxPerCm, selected, auctionLabel, onActivate, onKey }: SpotShapeProps) {
   const { id, x_cm: x, y_cm: y, w_cm: w, h_cm: h, status } = spot;
+  const [logoFailed, setLogoFailed] = useState(false);
+  const showLogo = status === 'verkocht' && Boolean(spot.logo_url) && !logoFailed;
   const colors =
     status === 'bezet'
       ? TAKEN_COLOR
@@ -308,7 +310,7 @@ function SpotShape({ spot, pxPerCm, selected, auctionLabel, onActivate, onKey }:
       lines = [id];
       break;
     case 'verkocht':
-      lines = spot.logo_url ? [] : [spot.koper || id];
+      lines = showLogo ? [] : [spot.koper || id];
       break;
   }
 
@@ -333,7 +335,7 @@ function SpotShape({ spot, pxPerCm, selected, auctionLabel, onActivate, onKey }:
         stroke={selected ? '#111' : '#1c1917'}
         strokeWidth={selected ? 1.6 : 0.6}
       />
-      {status === 'verkocht' && spot.logo_url && (
+      {showLogo && (
         <image
           href={spot.logo_url}
           x={x + 1.5}
@@ -341,6 +343,7 @@ function SpotShape({ spot, pxPerCm, selected, auctionLabel, onActivate, onKey }:
           width={w - 3}
           height={h - 3}
           preserveAspectRatio="xMidYMid meet"
+          onError={() => setLogoFailed(true)}
         />
       )}
       <SpotLabel x={x} y={y} w={w} h={h} lines={lines} color={colors.text} pxPerCm={pxPerCm} />
