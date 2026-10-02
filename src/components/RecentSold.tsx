@@ -8,7 +8,11 @@ export function RecentSold({ spots }: { spots: Spot[] }) {
 
   return (
     <section aria-labelledby="recent-titel">
-      <h2 id="recent-titel" className="section-title">
+      <p className="eyebrow">Sociaal bewijs</p>
+      <h2
+        id="recent-titel"
+        className="mt-2 mb-6 font-display text-3xl font-extrabold text-navy sm:text-4xl"
+      >
         Recent verkocht
       </h2>
       {recent.length === 0 ? (
@@ -38,7 +42,7 @@ export function RecentSold({ spots }: { spots: Spot[] }) {
               </>
             );
             return (
-              <li key={spot.id} className="rounded-lg border border-stone-300 bg-stone-50 p-2">
+              <li key={spot.id} className="card p-3">
                 {spot.website ? (
                   <a href={spot.website} target="_blank" rel="noopener" className="block">
                     {content}

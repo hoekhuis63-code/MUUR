@@ -124,3 +124,25 @@ body {
     print-color-adjust: exact;
   }
 }
+
+/* ---------- Huisstijl-onderdelen ---------- */
+@layer components {
+  .card {
+    @apply rounded-3xl border border-navy/10 bg-white shadow-[0_10px_30px_-12px_rgba(7,52,89,0.25)];
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-sm font-bold tracking-wider text-oranje uppercase;
+  }
+  /* De oranje streepjes uit het logo ("— HUUS —"). */
+  .eyebrow::before,
+  .eyebrow-center::after {
+    content: '';
+    @apply inline-block h-[3px] w-6 rounded-full bg-merk-oranje;
+  }
+  .section {
+    @apply mx-auto max-w-5xl px-4 py-14 sm:py-20;
+  }
+  .section-lead {
+    @apply mt-2 mb-8 max-w-2xl text-lg text-ink/80;
+  }
+}

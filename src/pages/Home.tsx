@@ -3,12 +3,16 @@ import { About } from '../components/About';
 import { AuctionBlock } from '../components/AuctionBlock';
 import { Faq } from '../components/Faq';
 import { Footer } from '../components/Footer';
+import { Hero } from '../components/Hero';
 import { HowItWorks } from '../components/HowItWorks';
 import { Legend } from '../components/Legend';
 import { Progress } from '../components/Progress';
 import { RecentSold } from '../components/RecentSold';
 import { SpotList } from '../components/SpotList';
+import { SiteNav } from '../components/SiteNav';
 import { SpotPanel } from '../components/SpotPanel';
+import { StickyCta } from '../components/StickyCta';
+import { TrustStrip } from '../components/TrustStrip';
 import { WallMap } from '../components/WallMap';
 import { DEFAULT_CONFIG, auctionState } from '../lib/data';
 import { useWallData } from '../lib/useWallData';
@@ -65,44 +69,42 @@ export function Home() {
 
   return (
     <>
-      <header className="bg-lichtblauw">
-        <div className="mx-auto flex max-w-5xl flex-col gap-4 px-4 pt-4 pb-8 sm:flex-row sm:items-center sm:gap-8 sm:pt-8">
-          <img
-            src="/logo-320.webp"
-            srcSet="/logo-320.webp 320w, /logo-640.webp 640w"
-            sizes="(min-width: 640px) 260px, 200px"
-            width={320}
-            height={320}
-            alt="Het Hoekhuus"
-            fetchPriority="high"
-            className="mx-auto h-auto w-[200px] shrink-0 sm:mx-0 sm:w-[260px]"
-          />
-          <div className="space-y-4">
-            <h1 className="font-display text-4xl leading-tight font-extrabold tracking-tight text-navy sm:text-5xl">
-              Koop een stukje van het Hoekhuus
-            </h1>
-            <p className="max-w-2xl text-lg text-ink">
-              Vier vrienden, één pand van €500.000. We verbouwen het voor minder dan €100.000 en
-              deze muur van 320 x 230 cm helpt daarbij. Kies een vak, betaal, en wij plakken jouw
-              logo erop.
-            </p>
-            {data ? (
-              <Progress spots={spots} />
-            ) : (
-              <div className="h-[4.5rem] animate-pulse rounded bg-white/70 sm:h-11" />
-            )}
-          </div>
-        </div>
-      </header>
-      <main className="mx-auto max-w-5xl space-y-14 px-4 pt-10 pb-8">
-        <section ref={mapRef} aria-labelledby="muur-titel" className="scroll-mt-2 space-y-3">
+      <a
+        href="#muur"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-lg focus:bg-white focus:p-3"
+      >
+        Direct naar de muur
+      </a>
+      <SiteNav />
+      <Hero
+        progress={
+          data ? (
+            <Progress spots={spots} />
+          ) : (
+            <div className="h-[4.5rem] animate-pulse rounded bg-lichtblauw sm:h-11" />
+          )
+        }
+      />
+      <main className="mx-auto max-w-5xl space-y-16 px-4 pt-12 pb-12 sm:space-y-24 sm:pt-16">
+        <section
+          id="muur"
+          ref={mapRef}
+          aria-labelledby="muur-titel"
+          className="card scroll-mt-20 space-y-4 p-4 sm:p-8"
+        >
           <div className="flex items-end justify-between gap-3">
-            <h2 id="muur-titel" className="font-display text-2xl font-extrabold text-navy">
-              Kies je vak
-            </h2>
+            <div>
+              <p className="eyebrow">320 x 230 cm</p>
+              <h2
+                id="muur-titel"
+                className="mt-1 font-display text-3xl font-extrabold text-navy sm:text-4xl"
+              >
+                Kies je vak
+              </h2>
+            </div>
             {state.status !== 'error' && (
               <div
-                className="flex rounded-full border border-stone-300 bg-white p-1"
+                className="flex shrink-0 rounded-full bg-lichtblauw p-1"
                 role="group"
                 aria-label="Weergave"
               >
@@ -161,6 +163,9 @@ export function Home() {
             </>
           )}
           {data && mode === 'lijst' && <SpotList spots={spots} onSelect={select} />}
+          <div className="border-t border-navy/10 pt-5">
+            <TrustStrip />
+          </div>
           {data?.source === 'fallback' && (
             <p className="text-sm text-stone-600">
               Let op: je ziet mogelijk een eerdere stand van de muur. We proberen het elke minuut
@@ -178,6 +183,7 @@ export function Home() {
         <Faq looptijd={config.looptijd} />
       </main>
       <Footer config={config} />
+      <StickyCta hidden={Boolean(selected)} />
       {selected && (
         <SpotPanel
           key={selected.id}

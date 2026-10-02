@@ -35,10 +35,14 @@ export function AuctionBlock({ spot, bids, config, bidFormUrl }: Props) {
     <section
       id="veiling"
       aria-labelledby="veiling-titel"
-      className="scroll-mt-4 rounded-2xl bg-navy p-5 text-white sm:p-8"
+      className="relative scroll-mt-20 overflow-hidden rounded-3xl bg-navy p-6 text-white shadow-[0_20px_40px_-15px_rgba(7,52,89,0.6)] sm:p-10"
     >
-      <p className="text-sm font-semibold tracking-wide text-oranje-licht uppercase">Veiling</p>
-      <h2 id="veiling-titel" className="mt-1 font-display text-3xl font-extrabold">
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-oranje-licht to-merk-oranje"
+      />
+      <p className="text-sm font-bold tracking-wider text-oranje-licht uppercase">Veiling</p>
+      <h2 id="veiling-titel" className="mt-1 font-display text-4xl font-extrabold sm:text-5xl">
         The Spot
       </h2>
       <p className="mt-1 text-blue-100">
