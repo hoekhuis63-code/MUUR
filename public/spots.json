@@ -397,12 +397,12 @@
     "w_cm": 15.5,
     "h_cm": 15.5,
     "prijs_eur": 99,
-    "status": "vrij",
-    "koper": "",
+    "status": "verkocht",
+    "koper": "KWW Media",
     "website": "",
     "logo_url": "",
     "betaallink": "https://buy.stripe.com/3cI00j79CdZJavGbOH4Ja0q",
-    "verkocht_op": ""
+    "verkocht_op": "2026-10-03"
   },
   {
     "id": "28",
