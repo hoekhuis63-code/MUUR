@@ -1,0 +1,90 @@
+@import 'tailwindcss';
+
+:root {
+  --wall: #f5f0e8;
+  color-scheme: light;
+}
+
+body {
+  background: #fbf8f3;
+  color: #1c1917;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* Vakken in de SVG: focus zichtbaar maken op de rand zelf. */
+.spot:focus {
+  outline: none;
+}
+.spot:focus-visible .box {
+  stroke: #000;
+  stroke-width: 2.4px;
+}
+.spot:hover .box {
+  filter: brightness(1.08);
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex min-h-12 w-full items-center justify-center rounded-full bg-red-700 px-6 text-lg font-bold text-white hover:bg-red-800 disabled:cursor-not-allowed disabled:bg-stone-400 disabled:text-stone-800;
+  }
+  .btn-secondary {
+    @apply inline-flex min-h-11 w-full items-center justify-center rounded-full border border-stone-400 bg-white px-4 font-semibold text-stone-900 hover:border-stone-900;
+  }
+  .section-title {
+    @apply mb-4 text-2xl font-extrabold;
+  }
+}
+
+.prose-page {
+  line-height: 1.65;
+}
+.prose-page h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.prose-page h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 2rem 0 0.5rem;
+}
+.prose-page h3 {
+  font-weight: 700;
+  margin: 1.5rem 0 0.5rem;
+}
+.prose-page p,
+.prose-page ul,
+.prose-page ol,
+.prose-page blockquote {
+  margin: 0.75rem 0;
+}
+.prose-page ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+.prose-page ol {
+  list-style: decimal;
+  padding-left: 1.25rem;
+}
+.prose-page a {
+  text-decoration: underline;
+}
+.prose-page blockquote {
+  border-left: 4px solid #f59e0b;
+  background: #fffbeb;
+  padding: 0.75rem 1rem;
+}
