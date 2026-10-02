@@ -25,7 +25,7 @@ id,type,x_cm,y_cm,w_cm,h_cm,prijs_eur,status,koper,website,logo_url,betaallink,v
 24,t,0.5,99,15.5,17,99,vrij,,,,https://buy.stripe.com/3cI3cv9hK2h11Za5qj4Ja0n,
 25,t,0.5,116,15.5,17.5,99,vrij,,,,https://buy.stripe.com/14A6oHgKc2h1eLWdWP4Ja0o,
 26,t,0.5,133.5,15.5,17,99,vrij,,,,https://buy.stripe.com/8x228rfG82h1bzKaKD4Ja0p,
-27,t,0.5,150.5,15.5,15.5,99,verkocht,KWW Media,,,https://buy.stripe.com/3cI00j79CdZJavGbOH4Ja0q,2026-10-03
+27,t,0.5,150.5,15.5,15.5,99,vrij,,,,https://buy.stripe.com/3cI00j79CdZJavGbOH4Ja0q,
 28,t,0.5,166,15.5,17.5,99,vrij,,,,https://buy.stripe.com/eVqbJ1dy03l547i8Cv4Ja0r,
 29,t,0.5,183.5,15.5,17,99,vrij,,,,https://buy.stripe.com/fZueVd65yg7RgU42e74Ja0s,
 30,t,0.5,200.5,15.5,16.5,99,vrij,,,,https://buy.stripe.com/9B6bJ1eC43l5eLWg4X4Ja0t,
