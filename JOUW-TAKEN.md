@@ -15,7 +15,7 @@ gebouwd. Werk de stappen in deze volgorde af; achter elke stap staat wat je teru
 5. **Instellingen > Facturen**: adres, KvK, btw-nummer, doorlopende factuurnummering.
 6. **Instellingen > Betaalmethoden**: iDEAL, kaarten, Bancontact, Apple Pay en Google Pay aan.
 7. **Ontwikkelaars > API-sleutels** (testmodus aan): kopieer de _geheime sleutel_ (`sk_test_...`).
-   Plak die **nergens in een chat**. Zet hem in GitHub (stap 5).
+   Plak die **nergens in een chat**. Zet hem in GitHub (stap 4).
 
 ## 2. Google Sheet invullen en publiceren (10 min)
 
@@ -44,11 +44,7 @@ Integrations > Google Sheets > koppel aan tabblad `aanleveringen`. E-mailmelding
 
 **Stuur terug:** de 2 formulier-ID's (het stukje na `tally.so/r/`).
 
-## 4. Pull request samenvoegen (1 min)
-
-Open de pull request op GitHub en klik **Merge**. Daarna komt alles op de `main`-branch.
-
-## 5. GitHub-geheim voor Stripe (2 min)
+## 4. GitHub-geheim voor Stripe (2 min)
 
 GitHub > repo **MUUR** > Settings > Secrets and variables > Actions:
 
@@ -59,14 +55,14 @@ Betaallinks maken: tab **Actions** > _Stripe-betaallinks_ > **Run workflow** (mo
 proefdraaien uit). Download onder _Artifacts_ het bestand `spots_met_links.csv` en plak de kolom
 `betaallink` in de sheet. Of stuur het naar Claude.
 
-## 6. Vercel (10 min)
+## 5. Vercel (10 min)
 
 1. Log in op [vercel.com](https://vercel.com) met je GitHub-account.
-2. **Add New > Project** > importeer `hoekhuis63-code/MUUR` > Deploy. Instellingen staan goed
+2. **Add New > Project** > importeer `hoekhuis63-code/MUUR` > Deploy. De branch `claude/hoekhuis-muur-website-2vi7nm` is de standaardbranch en gaat dus direct live. Instellingen staan goed
    (Vite wordt herkend). Env-variabelen hoef je niet in te stellen; die zet Claude in de code
    zodra je de links en ID's van stap 2 en 3 hebt gestuurd.
 
-## 7. Domein koppelen (15 min)
+## 6. Domein koppelen (15 min)
 
 1. Zoek op [sidn.nl/whois](https://www.sidn.nl/whois) bij wie `hethoekhuus.nl` geregistreerd is
    (de _registrar_, bijv. TransIP, Versio, Strato). Log daar in; het account is meestal van degene
@@ -76,7 +72,7 @@ proefdraaien uit). Download onder _Artifacts_ het bestand `spots_met_links.csv` 
    een **CNAME** `www` naar `cname.vercel-dns.com`).
 3. Zet die records bij de registrar. **Laat de MX-records staan**, anders werkt de mail niet meer.
 
-## 8. Beslissingen en echte wereld
+## 7. Beslissingen en echte wereld
 
 - Muur opmeten en de echte x/y/breedte/hoogte per vak in de sheet zetten (Claude kan de indeling
   daarna controleren en de terugval bijwerken).
@@ -85,7 +81,7 @@ proefdraaien uit). Download onder _Artifacts_ het bestand `spots_met_links.csv` 
 - Voorwaarden en privacyverklaring laten checken door boekhouder of jurist, en de `[INVULLEN]`
   plekken invullen (of stuur de gegevens naar Claude).
 
-## 9. Testen (30 min)
+## 8. Testen (30 min)
 
 Loop de testchecklist in de README af. Doe een testbetaling met kaart `4242 4242 4242 4242`. Als
 alles werkt: geheime live-sleutel in GitHub, workflow draaien in modus `live`, nieuwe links in de
