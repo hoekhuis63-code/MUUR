@@ -226,8 +226,37 @@ try {
   stop(`kan ${input} niet lezen: ${err.message}`);
 }
 
-const stats = { aangemaakt: 0, alLink: 0, nietVrij: 0, mislukt: 0 };
+const stats = { aangemaakt: 0, alLink: 0, nietVrij: 0, verkocht: 0, mislukt: 0, gedeactiveerd: 0 };
 let tosHintShown = false;
+
+// Vakken die al betaald zijn krijgen nooit een nieuwe link (anders dubbel verkocht).
+// Bestaande actieve links per vak, zodat links met een oude prijs uitgezet worden.
+const verkochteVakken = new Set();
+const actieveLinks = new Map(); // vak -> [{ id, url }]
+if (!dryRun) {
+  for await (const s of stripe.checkout.sessions.list({ status: 'complete', limit: 100 })) {
+    if (s.payment_status === 'paid' && s.metadata?.vak) verkochteVakken.add(String(s.metadata.vak));
+  }
+  for await (const l of stripe.paymentLinks.list({ active: true, limit: 100 })) {
+    const vak = l.metadata?.vak;
+    if (!vak) continue;
+    if (!actieveLinks.has(vak)) actieveLinks.set(vak, []);
+    actieveLinks.get(vak).push({ id: l.id, url: l.url });
+  }
+  console.log(
+    `Stripe: ${verkochteVakken.size} vak(ken) al betaald, ${actieveLinks.size} vak(ken) met actieve link.\n`,
+  );
+}
+
+/** Zet andere actieve links van dit vak uit (bijv. na een prijswijziging). */
+async function deactiveerOude(vak, nieuweUrl) {
+  for (const oud of actieveLinks.get(vak) ?? []) {
+    if (oud.url === nieuweUrl) continue;
+    await stripe.paymentLinks.update(oud.id, { active: false });
+    stats.gedeactiveerd++;
+    console.log(`  ↳ oude link uitgezet: ${oud.url}`);
+  }
+}
 
 try {
   for (const row of rows) {
@@ -239,6 +268,11 @@ try {
     const prijs = toNumber(row.prijs_eur);
     if (row.status !== 'vrij' || !(prijs > 0)) {
       stats.nietVrij++;
+      continue;
+    }
+    if (verkochteVakken.has(String(row.id))) {
+      console.log(`• ${id}: al betaald in Stripe, geen nieuwe link.`);
+      stats.verkocht++;
       continue;
     }
     if (!TYPE_LABELS[row.type]) {
@@ -258,6 +292,7 @@ try {
     try {
       const url = await createLink(row);
       row.betaallink = url;
+      await deactiveerOude(String(row.id), url);
       stats.aangemaakt++;
       console.log(`✓ ${id}: ${url}`);
     } catch (err) {
@@ -287,6 +322,8 @@ const summary = [
   [dryRun ? 'zou aanmaken' : 'aangemaakt', stats.aangemaakt],
   ['overgeslagen (al link)', stats.alLink],
   ['overgeslagen (niet vrij / prijs 0)', stats.nietVrij],
+  ['overgeslagen (al betaald)', stats.verkocht],
+  ['oude links uitgezet', stats.gedeactiveerd],
   ['mislukt', stats.mislukt],
 ];
 for (const [label, n] of summary) console.log(`  ${(label + ':').padEnd(36)} ${n}`);

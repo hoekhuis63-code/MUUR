@@ -23,6 +23,9 @@ export function Legend({ spots }: { spots: Spot[] }) {
           {item.label}
         </li>
       ))}
+      <li className="font-semibold text-navy">
+        Nog {free.length} van {spots.filter((s) => s.prijs_eur > 0).length} vakken vrij
+      </li>
       <li className="text-stone-600">Prijzen excl. btw</li>
     </ul>
   );

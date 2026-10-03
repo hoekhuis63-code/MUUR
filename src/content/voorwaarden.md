@@ -2,7 +2,7 @@
 
 # Algemene voorwaarden
 
-Versie 2 oktober 2026
+Versie 3 oktober 2026
 
 Deze voorwaarden gelden voor elke aankoop van een vak en elk bod op The Spot via hethoekhuus.nl. Door te betalen of te bieden ga je akkoord met deze voorwaarden. Afwijkingen gelden alleen als we ze schriftelijk (ook per e-mail) met je hebben afgesproken. Algemene voorwaarden van de koper gelden niet.
 
@@ -85,7 +85,7 @@ De Muur van Het Hoekhuus is een aanbod van **KWW media**, handelend onder de naa
 
 ## 11. Veiling van The Spot
 
-- Het startbod is **€5.000** (excl. btw). Elk nieuw bod is minimaal **€250** hoger dan het hoogste bod.
+- Het startbod is **€3.000** (excl. btw). Elk nieuw bod is minimaal **€250** hoger dan het hoogste bod.
 - Alleen bedrijven met een KvK-nummer (of een buitenlands equivalent) kunnen bieden.
 - Een bod is **bindend** en kan niet worden ingetrokken.
 - We tonen het hoogste bod en de naam van de bieder op de website en in onze video's. Door te bieden ga je daarmee akkoord.

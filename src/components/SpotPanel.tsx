@@ -7,12 +7,12 @@ import { WallPhoto } from './WallPhoto';
 interface Props {
   spot: Spot;
   onClose: () => void;
-  bidFormUrl?: string;
+  onBid?: () => void;
   /** Bijv. "Hoogste bod €5.250" voor The Spot. */
   auction?: { label: string; amount: number };
 }
 
-export function SpotPanel({ spot, onClose, bidFormUrl, auction }: Props) {
+export function SpotPanel({ spot, onClose, onBid, auction }: Props) {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const [shareMessage, setShareMessage] = useState('');
 
@@ -130,10 +130,10 @@ export function SpotPanel({ spot, onClose, bidFormUrl, auction }: Props) {
         )}
         {isAuction && (
           <>
-            {bidFormUrl && (
-              <a href={bidFormUrl} target="_blank" rel="noopener" className="btn-primary">
+            {onBid && (
+              <button type="button" onClick={onBid} className="btn-primary">
                 Bied mee
-              </a>
+              </button>
             )}
             <a href="#veiling" onClick={onClose} className="btn-secondary">
               Bekijk de veiling

@@ -42,6 +42,7 @@ export async function GET() {
     return json({ error: 'Stripe niet bereikbaar' }, 502, 'no-store');
   }
 
+  // eslint-disable-next-line no-unused-vars
   const verkocht = [...perVak.values()].map(({ created: _created, ...rest }) => rest);
   return json({ verkocht }, 200, 'public, s-maxage=20, stale-while-revalidate=60');
 }

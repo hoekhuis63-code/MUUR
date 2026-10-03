@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "@fontsource/montserrat": "^5.3.0",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/blob": "^2.8.0",
     "marked": "^18.0.14",
     "papaparse": "^5.7.0",
     "react": "^19.3.0",

@@ -19,7 +19,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ['scripts/**/*.mjs', '*.js'],
+    files: ['scripts/**/*.mjs', 'api/**/*.js', '*.js'],
     extends: [js.configs.recommended, prettier],
     languageOptions: { ecmaVersion: 2023, globals: globals.node },
   },

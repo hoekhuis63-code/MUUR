@@ -1,3 +1,4 @@
+import { track } from '@vercel/analytics';
 import type { Spot } from './types';
 
 const BRON_KEY = 'muur_bron';
@@ -46,6 +47,7 @@ export function claimUrl(spot: Spot, bron: string): string | undefined {
 
 export function trackEvent(name: string, props: Record<string, string>): void {
   window.plausible?.(name, { props });
+  track(name, props);
 }
 
 /** Laadt Plausible (cookieloos) alleen als VITE_PLAUSIBLE_DOMAIN gezet is. */

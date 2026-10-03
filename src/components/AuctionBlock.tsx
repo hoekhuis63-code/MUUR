@@ -8,8 +8,16 @@ interface Props {
   spot?: Spot;
   bids: Bid[];
   config: SiteConfig;
-  bidFormUrl?: string;
+  onBid: () => void;
 }
+
+const timeFormatter = new Intl.DateTimeFormat('nl-NL', {
+  day: 'numeric',
+  month: 'short',
+  hour: '2-digit',
+  minute: '2-digit',
+  timeZone: 'Europe/Amsterdam',
+});
 
 const endFormatter = new Intl.DateTimeFormat('nl-NL', {
   weekday: 'long',
@@ -20,7 +28,7 @@ const endFormatter = new Intl.DateTimeFormat('nl-NL', {
   timeZone: 'Europe/Amsterdam',
 });
 
-export function AuctionBlock({ spot, bids, config, bidFormUrl }: Props) {
+export function AuctionBlock({ spot, bids, config, onBid }: Props) {
   const [now, setNow] = useState(() => Date.now());
   useEffect(() => {
     const timer = window.setInterval(() => setNow(Date.now()), 1000);
@@ -46,7 +54,8 @@ export function AuctionBlock({ spot, bids, config, bidFormUrl }: Props) {
         The Spot
       </h2>
       <p className="mt-1 text-blue-100">
-        Het grootste vak: {spot ? `${spot.w_cm} x ${spot.h_cm} cm` : '85 x 99 cm'}, midden op de muur. Gaat naar het hoogste bod.
+        Het grootste vak: {spot ? `${spot.w_cm} x ${spot.h_cm} cm` : '85 x 99 cm'}, midden op de
+        muur. Gaat naar het hoogste bod.
       </p>
 
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
@@ -74,20 +83,45 @@ export function AuctionBlock({ spot, bids, config, bidFormUrl }: Props) {
         </div>
       </div>
 
+      {bids.length > 0 && (
+        <div className="mt-6">
+          <p className="text-sm font-bold tracking-wider text-oranje-licht uppercase">
+            {closed ? 'Winnaar' : 'Laatste biedingen'}
+          </p>
+          <ol className="mt-2 divide-y divide-white/10 rounded-2xl bg-white/5">
+            {[...bids]
+              .sort((x, y) => y.bod_eur - x.bod_eur)
+              .slice(0, closed ? 1 : 5)
+              .map((b, i) => (
+                <li
+                  key={`${b.tijd}-${b.bedrijf}`}
+                  className="flex items-center justify-between gap-3 px-4 py-2.5"
+                >
+                  <span className="min-w-0 truncate">
+                    {i === 0 && !closed && (
+                      <span className="mr-2 rounded-full bg-oranje-licht px-2 py-0.5 text-xs font-bold text-navy">
+                        Hoogste
+                      </span>
+                    )}
+                    {b.bedrijf}
+                  </span>
+                  <span className="shrink-0 text-right">
+                    <strong className="font-display">{euro(b.bod_eur)}</strong>
+                    <span className="block text-xs text-blue-200">
+                      {timeFormatter.format(new Date(b.tijd))}
+                    </span>
+                  </span>
+                </li>
+              ))}
+          </ol>
+        </div>
+      )}
+
       {!closed && (
         <div className="mt-6">
-          {bidFormUrl ? (
-            <a href={bidFormUrl} target="_blank" rel="noopener" className="btn-primary sm:w-auto">
-              Bied mee
-            </a>
-          ) : (
-            <a
-              href={`mailto:${config.contact_email || 'info@hethoekhuus.nl'}?subject=${encodeURIComponent('Bod op The Spot')}&body=${encodeURIComponent('Bedrijfsnaam:\nKvK-nummer:\nMijn bod (excl. btw): €\nTelefoon:\n')}`}
-              className="btn-primary sm:w-auto"
-            >
-              Bied mee per mail
-            </a>
-          )}
+          <button type="button" onClick={onBid} className="btn-primary sm:w-auto">
+            Bied mee
+          </button>
           <p className="mt-2 text-sm text-blue-100">
             Je volgende bod is minimaal {euro(state.nextMinimum)}. Bieden is bindend en alleen voor
             bedrijven met een KvK-nummer.

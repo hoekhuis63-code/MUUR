@@ -26,6 +26,14 @@ export const STEPS = [
 export function faq(looptijd: string) {
   return [
     {
+      q: 'Wat levert het mijn bedrijf op?',
+      a: 'Je logo hangt op een echte muur in een pand dat duizenden mensen volgen: onze eerste video werd meer dan een miljoen keer bekeken. Op deze site staat je logo met een link naar je website. Een garantie op bereik geven we niet, wel een vaste plek midden in het verhaal.',
+    },
+    {
+      q: 'Krijg ik een factuur op naam van mijn bedrijf?',
+      a: 'Ja. Bij het afrekenen vul je je bedrijfsnaam en eventueel btw-nummer in. Je krijgt direct een factuur met 21% btw per e-mail. Voor bedrijven uit een ander EU-land met een geldig btw-nummer wordt de btw verlegd.',
+    },
+    {
       q: 'Wat koop ik precies?',
       a: 'Het recht dat je logo of bedrijfsnaam als sticker op het vak van jouw keuze hangt, op de echte muur in het Hoekhuus, voor minimaal 3 maanden. Op deze site staat je logo met een link naar je website.',
     },
@@ -51,7 +59,7 @@ export function faq(looptijd: string) {
     },
     {
       q: 'Hoe werkt de veiling van The Spot?',
-      a: 'Het startbod is €5.000 en elk bod moet minimaal €250 hoger zijn dan het hoogste bod. Bieden is bindend en alleen voor bedrijven met een KvK-nummer. De veiling heeft een vast einde. De winnaar krijgt een eigen betaallink en betaalt binnen 48 uur; anders volgt een boete van 50% van het bod. Het hoogste bod en de naam van de bieder tonen we op de site.',
+      a: 'Het startbod is €3.000 en elk bod moet minimaal €250 hoger zijn dan het hoogste bod. Bieden is bindend en alleen voor bedrijven met een KvK-nummer. De veiling heeft een vast einde. De winnaar krijgt een eigen betaallink en betaalt binnen 48 uur; anders volgt een boete van 50% van het bod. Het hoogste bod en de naam van de bieder tonen we op de site.',
     },
     {
       q: 'Kan ik als particulier een vak kopen?',

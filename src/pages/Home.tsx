@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { About } from '../components/About';
 import { AuctionBlock } from '../components/AuctionBlock';
+import { BidForm } from '../components/BidForm';
 import { Faq } from '../components/Faq';
 import { Footer } from '../components/Footer';
 import { Hero } from '../components/Hero';
@@ -15,10 +16,10 @@ import { StickyCta } from '../components/StickyCta';
 import { TrustStrip } from '../components/TrustStrip';
 import { WallMap } from '../components/WallMap';
 import { DEFAULT_CONFIG, auctionState } from '../lib/data';
+import { useBids } from '../lib/bids';
+import { euro } from '../lib/format';
+import { trackEvent } from '../lib/claim';
 import { useWallData } from '../lib/useWallData';
-
-const bidFormId = import.meta.env.VITE_TALLY_BID_FORM_ID as string | undefined;
-const bidFormUrl = bidFormId ? `https://tally.so/r/${encodeURIComponent(bidFormId)}` : undefined;
 
 function idFromHash(): string | undefined {
   const id = decodeURIComponent(window.location.hash.slice(1)).toUpperCase();
@@ -27,6 +28,12 @@ function idFromHash(): string | undefined {
 
 export function Home() {
   const { state, retry } = useWallData();
+  const { bids, refresh: refreshBids } = useBids();
+  const [bidOpen, setBidOpen] = useState(false);
+  const openBid = useCallback(() => {
+    trackEvent('bied_klik', {});
+    setBidOpen(true);
+  }, []);
   const [selectedId, setSelectedId] = useState<string | undefined>(idFromHash);
   const [mode, setMode] = useState<'kaart' | 'lijst'>('kaart');
   const mapRef = useRef<HTMLDivElement>(null);
@@ -64,8 +71,20 @@ export function Home() {
     }
   }, [selected]);
 
-  const auction = data ? auctionState(data.bids, config, 0) : undefined;
+  const auction = data ? auctionState(bids, config, 0) : undefined;
   const spotS1 = spots.find((s) => s.type === 'spot');
+  const freeSpots = spots.filter((s) => s.status === 'vrij' && s.betaallink && s.prijs_eur > 0);
+  const cheapest = freeSpots.reduce<(typeof spots)[number] | undefined>(
+    (min, s) => (!min || s.prijs_eur < min.prijs_eur ? s : min),
+    undefined,
+  );
+  const pickForMe = useCallback(() => {
+    if (!cheapest) return;
+    const options = freeSpots.filter((s) => s.prijs_eur === cheapest.prijs_eur);
+    const pick = options[Math.floor(Math.random() * options.length)] ?? cheapest;
+    trackEvent('kies_voor_mij', { vak: pick.id });
+    select(pick.id);
+  }, [cheapest, freeSpots, select]);
 
   return (
     <>
@@ -152,6 +171,15 @@ export function Home() {
                 selectedId={selectedId}
                 onSelect={select}
               />
+              {cheapest && (
+                <button
+                  type="button"
+                  className="btn-secondary min-h-11 sm:w-auto sm:px-5"
+                  onClick={pickForMe}
+                >
+                  Kies voor mij een vak vanaf {euro(cheapest.prijs_eur)}
+                </button>
+              )}
               <p className="text-sm text-stone-600">
                 Tik op een vak. Knijp of gebruik + om in te zoomen, of bekijk de{' '}
                 <button type="button" className="underline" onClick={() => setMode('lijst')}>
@@ -174,22 +202,30 @@ export function Home() {
           )}
         </section>
 
-        {data && (
-          <AuctionBlock spot={spotS1} bids={data.bids} config={config} bidFormUrl={bidFormUrl} />
-        )}
+        {data && <AuctionBlock spot={spotS1} bids={bids} config={config} onBid={openBid} />}
         <HowItWorks />
         {data && <RecentSold spots={spots} />}
         <About config={config} />
         <Faq looptijd={config.looptijd} />
       </main>
       <Footer config={config} />
-      <StickyCta hidden={Boolean(selected)} />
+      <StickyCta hidden={Boolean(selected) || bidOpen} />
+      {bidOpen && (
+        <BidForm
+          minimum={auction?.nextMinimum ?? config.startbod_eur}
+          onClose={() => setBidOpen(false)}
+          onPlaced={() => void refreshBids()}
+        />
+      )}
       {selected && (
         <SpotPanel
           key={selected.id}
           spot={selected}
           onClose={close}
-          bidFormUrl={bidFormUrl}
+          onBid={() => {
+            close();
+            openBid();
+          }}
           auction={
             auction && {
               label: auction.highest ? 'Hoogste bod' : 'Startbod',
