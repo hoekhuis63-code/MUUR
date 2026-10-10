@@ -17,9 +17,6 @@ export function WhatYouGet() {
       <h2 id="krijg-titel" className="font-display text-2xl font-extrabold text-navy sm:text-3xl">
         Wat krijg je?
       </h2>
-      <p className="mt-1 text-ink/75">
-        Voor iedereen hetzelfde, of je nu €25 of €250 betaalt. Bedrijf, hond of oma: mag allemaal.
-      </p>
       <ol className="mt-4 grid gap-x-6 gap-y-2.5 sm:grid-cols-2">
         {ITEMS.map((item, i) => (
           <li key={item} className="flex gap-3">
