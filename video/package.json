@@ -5,14 +5,13 @@
   "type": "module",
   "scripts": {
     "studio": "remotion studio",
-    "whisper:install": "node scripts/install-whisper.mjs",
-    "transcribe": "node scripts/transcribe.mjs",
+    "setup:transcriptie": "bash scripts/setup-transcriptie.sh",
+    "transcribe": ".venv/bin/python scripts/transcribe.py",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@remotion/captions": "4.0.534",
     "@remotion/cli": "4.0.534",
-    "@remotion/install-whisper-cpp": "4.0.534",
     "@remotion/media-utils": "4.0.534",
     "react": "19.1.0",
     "react-dom": "19.1.0",
