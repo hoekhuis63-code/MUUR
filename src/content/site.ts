@@ -14,20 +14,20 @@ export const STEPS = [
     text: 'Veilig afrekenen via Stripe met iDEAL of kaart. Je krijgt meteen een factuur.',
   },
   {
-    title: 'Stuur je logo',
-    text: 'Upload je logo op de bedankpagina. Wij beoordelen het binnen 5 werkdagen.',
+    title: 'Stuur je logo, naam of foto',
+    text: 'Upload het op de bedankpagina. Wij beoordelen het binnen 5 werkdagen.',
   },
   {
     title: 'Op de muur',
-    text: 'In de regel binnen 14 dagen na goedkeuring hangt je logo op de muur. Je krijgt een foto.',
+    text: 'In de regel binnen 14 dagen na goedkeuring hangt het op de muur. Je krijgt een foto.',
   },
 ];
 
 export function faq(looptijd: string) {
   return [
     {
-      q: 'Wat levert het mijn bedrijf op?',
-      a: 'Je logo hangt op een echte muur in een pand dat duizenden mensen volgen: onze eerste video werd meer dan een miljoen keer bekeken. Op deze site staat je logo met een link naar je website. Een garantie op bereik geven we niet, wel een vaste plek midden in het verhaal.',
+      q: 'Wat levert het me op?',
+      a: 'Je logo, naam of foto hangt op een echte muur in een pand dat duizenden mensen volgen: onze eerste video werd meer dan een miljoen keer bekeken. Op deze site staat je vak met een link naar je website. Een garantie op bereik geven we niet, wel een vaste plek midden in het verhaal.',
     },
     {
       q: 'Krijg ik een factuur op naam van mijn bedrijf?',
@@ -35,10 +35,10 @@ export function faq(looptijd: string) {
     },
     {
       q: 'Wat koop ik precies?',
-      a: 'Het recht dat je logo of bedrijfsnaam als sticker op het vak van jouw keuze hangt, op de echte muur in het Hoekhuus, voor minimaal 3 maanden. Op deze site staat je logo met een link naar je website.',
+      a: 'Het recht dat je logo, naam of foto als sticker op het vak van jouw keuze hangt, op de echte muur in het Hoekhuus, voor minimaal 3 maanden. Daarbij: in beeld in elke video die we bij de muur opnemen, een plek in onze volgende video, een vermelding op onze socials, een keer langskomen en een biertje zodra de bar af is.',
     },
     {
-      q: 'Hoe lang blijft mijn logo hangen?',
+      q: 'Hoe lang blijft het hangen?',
       a: `We garanderen ${looptijd}. Daarna mag het blijven hangen zolang wij dat willen, maar daar heb je geen recht op. Verlengen kun je bij ons aanvragen.`,
     },
     {
@@ -47,11 +47,11 @@ export function faq(looptijd: string) {
     },
     {
       q: 'Welk bestand moet ik aanleveren?',
-      a: 'Het liefst een vectorbestand (SVG, PDF, AI of EPS). Een PNG met transparante achtergrond kan ook, minimaal 150 dpi op ware grootte: voor een tegel van 20 cm is dat 1.200 pixels breed. Houd 2 cm vrij rondom.',
+      a: 'Voor een logo het liefst een vectorbestand (SVG, PDF, AI of EPS). Een gewone foto van je telefoon kan ook (JPG, PNG of HEIC). Een PNG of foto moet scherp zijn, minimaal 150 dpi op ware grootte: voor een tegel van 20 cm is dat 1.200 pixels breed. Houd 2 cm vrij rondom.',
     },
     {
-      q: 'Kan mijn logo geweigerd worden?',
-      a: 'Ja. We plaatsen bijvoorbeeld geen reclame voor tabak, vapes, kansspelen, wapens, erotiek of politieke partijen. Weigeren we je logo vóór plaatsing, dan krijg je het betaalde bedrag terug. Verder staat de koop na betaling vast.',
+      q: 'Kan mijn afbeelding geweigerd worden?',
+      a: 'Ja. We plakken alleen wat we zelf ook in beeld willen hebben. Dus bijvoorbeeld geen reclame voor tabak, vapes, kansspelen, wapens, erotiek of politieke partijen. Weigeren we je afbeelding, dan krijg je het betaalde bedrag terug. Verder staat de koop na betaling vast.',
     },
     {
       q: 'Wat als iemand anders tegelijk hetzelfde vak koopt?',
@@ -63,7 +63,11 @@ export function faq(looptijd: string) {
     },
     {
       q: 'Kan ik als particulier een vak kopen?',
-      a: 'Ja, iedereen kan een vak kopen, ook zonder bedrijf: zet je naam, een boodschap of een tekening op de muur. Prijzen staan excl. btw, met het bedrag incl. 21% btw ernaast. Als particulier heb je 14 dagen bedenktijd; die vervalt zodra je logo op jouw verzoek is geplaatst.',
+      a: 'Ja, iedereen kan een vak kopen, ook zonder bedrijf: zet je naam, een foto of een tekening op de muur. Prijzen staan excl. btw, met het bedrag incl. 21% btw ernaast. Als particulier heb je 14 dagen bedenktijd; die vervalt zodra je vak op jouw verzoek is beplakt.',
+    },
+    {
+      q: 'Ziet iedereen dat ik een vak heb gekocht?',
+      a: 'Alleen als je dat wilt. Bij het afrekenen kies je of je naam in de melding "… heeft net een vak gekocht" op de site mag. Staat dat op nee, dan staat er "Iemand heeft net een vak gekocht" en op de kaart alleen "Verkocht".',
     },
   ];
 }

@@ -14,6 +14,8 @@ export const TOEGESTAAN = [
   'image/png',
   'image/jpeg',
   'image/webp',
+  'image/heic',
+  'image/heif',
   'application/pdf',
   'application/postscript',
   'application/illustrator',

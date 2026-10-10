@@ -7,14 +7,14 @@ import { Footer } from '../components/Footer';
 import { Hero } from '../components/Hero';
 import { HowItWorks } from '../components/HowItWorks';
 import { Legend } from '../components/Legend';
-import { Progress } from '../components/Progress';
-import { RecentSold } from '../components/RecentSold';
 import { SpotList } from '../components/SpotList';
 import { SiteNav } from '../components/SiteNav';
 import { SpotPanel } from '../components/SpotPanel';
+import { PurchaseToast } from '../components/PurchaseToast';
 import { StickyCta } from '../components/StickyCta';
 import { TrustStrip } from '../components/TrustStrip';
 import { WallMap } from '../components/WallMap';
+import { WhatYouGet } from '../components/WhatYouGet';
 import { DEFAULT_CONFIG, auctionState } from '../lib/data';
 import { useBids } from '../lib/bids';
 import { euro } from '../lib/format';
@@ -95,15 +95,7 @@ export function Home() {
         Direct naar de muur
       </a>
       <SiteNav />
-      <Hero
-        progress={
-          data ? (
-            <Progress spots={spots} />
-          ) : (
-            <div className="h-[4.5rem] animate-pulse rounded bg-lichtblauw sm:h-11" />
-          )
-        }
-      />
+      <Hero />
       <main className="mx-auto max-w-5xl space-y-16 px-4 pt-12 pb-12 sm:space-y-24 sm:pt-16">
         <section
           id="muur"
@@ -202,14 +194,15 @@ export function Home() {
           )}
         </section>
 
+        <WhatYouGet />
         {data && <AuctionBlock spot={spotS1} bids={bids} config={config} onBid={openBid} />}
         <HowItWorks />
-        {data && <RecentSold spots={spots} />}
         <About config={config} />
         <Faq looptijd={config.looptijd} />
       </main>
       <Footer config={config} />
       <StickyCta hidden={Boolean(selected) || bidOpen} />
+      <PurchaseToast purchases={data?.recent ?? []} hidden={Boolean(selected) || bidOpen} />
       {bidOpen && (
         <BidForm
           minimum={auction?.nextMinimum ?? config.startbod_eur}

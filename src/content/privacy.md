@@ -20,7 +20,8 @@ Versie: 2 oktober 2026
 
 ## Waarvoor we ze gebruiken
 
-- **Uitvoeren van de overeenkomst:** je vak verwerken, je logo keuren en plaatsen.
+- **Uitvoeren van de overeenkomst:** je vak verwerken, je logo, naam of foto keuren en plaatsen.
+- **Melding op de site:** alleen met je toestemming tonen we je naam bij "heeft net een vak gekocht".
 - **Facturatie:** we zijn wettelijk verplicht onze administratie **7 jaar** te bewaren.
 - **Veiling:** biedingen controleren en de winnaar benaderen.
 - **Contact:** je vragen beantwoorden en je op de hoogte houden van je vak.
@@ -29,6 +30,7 @@ Versie: 2 oktober 2026
 
 - **Uitvoering van een overeenkomst:** voor je aankoop, je logo en je bod.
 - **Wettelijke verplichting:** voor de fiscale bewaarplicht.
+- **Toestemming:** voor je naam in de melding op de site. Die kun je altijd intrekken via {{contact_email}}.
 - **Gerechtvaardigd belang:** voor contact over je vak en het controleren van biedingen.
 
 ## Verwerkers
@@ -43,7 +45,7 @@ We werken met deze partijen, die gegevens namens ons verwerken:
 
 ## Wat er openbaar op de site staat
 
-Op hethoekhuus.nl tonen we alleen je **bedrijfsnaam, logo, website** en, bij de veiling, je **bod**. Contactgegevens zoals naam, e-mail en telefoon zijn nooit openbaar.
+Op hethoekhuus.nl tonen we alleen je **logo, naam of foto, website** en, bij de veiling, je **bod**. Kies je bij het afrekenen dat je naam op de site mag, dan tonen we je (bedrijfs)naam in de melding "… heeft net een vak gekocht" en op de kaart. Kies je nee, dan staat er "Iemand" en "Verkocht". E-mail, telefoon en adres zijn nooit openbaar.
 
 ## Bewaartermijn
 

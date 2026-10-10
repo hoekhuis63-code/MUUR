@@ -8,6 +8,8 @@ const EXT_TYPES: Record<string, string> = {
   jpg: 'image/jpeg',
   jpeg: 'image/jpeg',
   webp: 'image/webp',
+  heic: 'image/heic',
+  heif: 'image/heif',
   pdf: 'application/pdf',
   ai: 'application/illustrator',
   eps: 'application/postscript',
@@ -31,10 +33,12 @@ export function LogoUpload({ vak, sessie }: Props) {
     event.preventDefault();
     if (!file) return setFout('Kies eerst een bestand.');
     const ext = file.name.split('.').pop()?.toLowerCase() ?? '';
-    const contentType = EXT_TYPES[ext];
+    // Foto's van een telefoon hebben soms geen extensie; dan telt het type van het bestand.
+    const contentType =
+      EXT_TYPES[ext] ?? (Object.values(EXT_TYPES).includes(file.type) ? file.type : undefined);
     if (!contentType)
       return setFout(
-        'Dit bestandstype kunnen we niet gebruiken. Kies SVG, PDF, AI, EPS, PNG of JPG.',
+        'Dit bestandstype kunnen we niet gebruiken. Kies een foto (JPG, PNG, HEIC) of SVG, PDF, AI of EPS.',
       );
     if (file.size > MAX_MB * 1024 * 1024) return setFout(`Het bestand is groter dan ${MAX_MB} MB.`);
 
@@ -64,8 +68,8 @@ export function LogoUpload({ vak, sessie }: Props) {
       setStatus('error');
       setFout(
         error instanceof Error && /betaalde/.test(error.message)
-          ? 'We konden je betaling voor dit vak niet vinden. Mail je logo naar info@hethoekhuus.nl.'
-          : 'Uploaden lukte niet. Probeer het opnieuw of mail je logo naar info@hethoekhuus.nl.',
+          ? 'We konden je betaling voor dit vak niet vinden. Mail je bestand naar info@hethoekhuus.nl.'
+          : 'Uploaden lukte niet. Probeer het opnieuw of mail je bestand naar info@hethoekhuus.nl.',
       );
     }
   }
@@ -73,7 +77,7 @@ export function LogoUpload({ vak, sessie }: Props) {
   if (status === 'done') {
     return (
       <div role="status" className="rounded-2xl bg-green-50 p-5">
-        <p className="font-display text-xl font-extrabold text-navy">Logo ontvangen. Dankjewel!</p>
+        <p className="font-display text-xl font-extrabold text-navy">Ontvangen. Dankjewel!</p>
         <p className="mt-1 text-ink/80">
           We beoordelen het binnen 5 werkdagen en mailen je als we iets nodig hebben.
         </p>
@@ -84,16 +88,16 @@ export function LogoUpload({ vak, sessie }: Props) {
   return (
     <form onSubmit={submit} className="card space-y-4 p-5">
       <label className="block font-semibold text-navy">
-        Je logo
+        Je logo, naam of foto
         <input
           type="file"
-          accept=".svg,.pdf,.ai,.eps,.png,.jpg,.jpeg,.webp"
+          accept="image/*,.svg,.pdf,.ai,.eps,.heic,.heif"
           className="mt-2 block w-full text-sm file:mr-3 file:min-h-11 file:rounded-full file:border-0 file:bg-lichtblauw file:px-4 file:font-semibold file:text-navy"
           onChange={(e) => setFile(e.target.files?.[0] ?? null)}
         />
         <span className="mt-1 block text-sm font-normal text-ink/70">
-          Liefst SVG, PDF, AI of EPS. PNG of JPG mag als hij scherp is (vak van 15 cm: minimaal 900
-          pixels breed). Max {MAX_MB} MB.
+          Een gewone foto van je telefoon is prima. Voor een logo liefst SVG, PDF, AI of EPS. Wel
+          scherp graag (vak van 15 cm: minimaal 900 pixels breed). Max {MAX_MB} MB.
         </span>
       </label>
       <label className="block font-semibold text-navy">
@@ -102,7 +106,7 @@ export function LogoUpload({ vak, sessie }: Props) {
           rows={3}
           maxLength={1000}
           className="mt-1 block w-full rounded-xl border border-navy/25 p-3 text-base"
-          placeholder="Bijv. achtergrondkleur, welke versie van je logo, website voor de link"
+          placeholder="Bijv. achtergrondkleur, welke naam of tekst erbij, website voor de link"
           value={opmerking}
           onChange={(e) => setOpmerking(e.target.value)}
         />
@@ -128,7 +132,7 @@ export function LogoUpload({ vak, sessie }: Props) {
         </p>
       )}
       <button type="submit" className="btn-primary" disabled={status === 'busy'}>
-        {status === 'busy' ? `Uploaden… ${progress}%` : 'Verstuur mijn logo'}
+        {status === 'busy' ? `Uploaden… ${progress}%` : 'Verstuur'}
       </button>
     </form>
   );

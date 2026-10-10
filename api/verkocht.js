@@ -1,11 +1,14 @@
 // Vercel Function: welke vakken zijn in Stripe betaald, en door wie?
-// GET /api/verkocht -> { verkocht: [{ vak, koper, verkocht_op }] }
+// GET /api/verkocht -> { verkocht: [{ vak, koper, verkocht_op, tijd }] }
+// koper is alleen gevuld als de koper bij het afrekenen "Ja" koos bij "Mag je naam op de site?".
 // Leest alleen (sleutel STRIPE_READ_KEY: restricted key met "Checkout Sessions: Read").
 // Kort gecachet aan de rand, zodat Stripe niet bij elke bezoeker wordt bevraagd.
 
 import { isEchteVerkoop } from './_lib/test-aankopen.js';
 
 const STRIPE_API = 'https://api.stripe.com/v1/checkout/sessions';
+/** Keuzeveld op de betaallink (scripts/create-payment-links.mjs). */
+const NAAM_VELD = 'naamopsite';
 
 export async function GET() {
   const key = process.env.STRIPE_READ_KEY;
@@ -29,10 +32,15 @@ export async function GET() {
         const prev = perVak.get(vak);
         if (prev && prev.created <= s.created) continue;
         const cd = s.customer_details ?? {};
+        const toestemming = s.custom_fields?.some(
+          (f) => f.key === NAAM_VELD && f.dropdown?.value === 'ja',
+        );
+        const tijd = new Date(s.created * 1000).toISOString();
         perVak.set(vak, {
           vak,
-          koper: (cd.business_name || cd.name || '').trim(),
-          verkocht_op: new Date(s.created * 1000).toISOString().slice(0, 10),
+          koper: toestemming ? (cd.business_name || cd.name || '').trim().slice(0, 80) : '',
+          verkocht_op: tijd.slice(0, 10),
+          tijd,
           created: s.created,
         });
       }

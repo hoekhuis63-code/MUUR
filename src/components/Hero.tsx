@@ -1,6 +1,4 @@
-import type { ReactNode } from 'react';
-
-export function Hero({ progress }: { progress: ReactNode }) {
+export function Hero() {
   return (
     <header className="relative overflow-hidden bg-lichtblauw">
       <div className="relative mx-auto grid max-w-5xl items-center gap-6 px-4 pt-4 pb-12 sm:grid-cols-[1fr_auto] sm:gap-10 sm:pt-14 sm:pb-16">
@@ -11,7 +9,7 @@ export function Hero({ progress }: { progress: ReactNode }) {
           </h1>
           <p className="max-w-xl text-lg text-ink sm:text-xl">
             Vier vrienden, één pand van €500.000. We verbouwen het voor minder dan €100.000, en deze
-            muur helpt daarbij. Kies een vak, betaal, en wij plakken jouw logo erop.
+            muur helpt daarbij. Kies een vak, betaal, en wij plakken jouw logo, naam of foto erop.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
             <a href="#muur" className="btn-primary sm:w-auto">
@@ -38,7 +36,6 @@ export function Hero({ progress }: { progress: ReactNode }) {
               </div>
             ))}
           </dl>
-          <div className="rounded-2xl bg-white/80 p-4">{progress}</div>
         </div>
         <img
           src="/logo-320.webp"

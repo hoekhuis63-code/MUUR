@@ -46,14 +46,14 @@ export function Bedankt() {
       <main className="mx-auto max-w-2xl space-y-8 px-4 py-10">
         <section aria-labelledby="logo-titel">
           <h2 id="logo-titel" className="mb-1 font-display text-2xl font-extrabold text-navy">
-            Stap 1: stuur je logo
+            Stap 1: stuur je logo, naam of foto
           </h2>
           <p className="mb-4 text-ink/80">Dan kunnen we de sticker laten maken.</p>
           {vak && sessie ? (
             <LogoUpload vak={vak} sessie={sessie} />
           ) : (
             <p className="rounded-xl bg-amber-50 p-4">
-              Mail je logo naar{' '}
+              Mail je bestand naar{' '}
               <a
                 className="font-semibold underline"
                 href={`mailto:info@hethoekhuus.nl?subject=${encodeURIComponent(`Logo voor vak ${vak}`)}`}
@@ -70,8 +70,8 @@ export function Bedankt() {
             Wat gebeurt er daarna?
           </h2>
           <ol className="mt-3 list-decimal space-y-2 pl-5 text-ink">
-            <li>We beoordelen je logo binnen 5 werkdagen.</li>
-            <li>In de regel binnen 14 dagen na goedkeuring hangt je logo op de muur.</li>
+            <li>We beoordelen je bestand binnen 5 werkdagen.</li>
+            <li>In de regel binnen 14 dagen na goedkeuring hangt het op de muur.</li>
             <li>Je krijgt een foto als bewijs.</li>
           </ol>
         </section>

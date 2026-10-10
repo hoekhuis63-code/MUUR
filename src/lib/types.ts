@@ -49,6 +49,14 @@ export interface SiteConfig {
   facebook_url: string;
 }
 
+/** Echte, betaalde aankoop uit Stripe. koper is leeg zonder toestemming voor de naam. */
+export interface Purchase {
+  vak: string;
+  koper: string;
+  /** ISO-tijdstip van betalen. */
+  tijd: string;
+}
+
 export interface WallData {
   spots: Spot[];
   bids: Bid[];
@@ -56,4 +64,6 @@ export interface WallData {
   /** 'live' = uit de Google Sheet, 'fallback' = meegebakken public/spots.json. */
   source: 'live' | 'fallback';
   updatedAt: Date;
+  /** Aankopen van de afgelopen dagen, nieuwste eerst (voor de melding linksonder). */
+  recent: Purchase[];
 }

@@ -2,7 +2,7 @@
 
 # Algemene voorwaarden
 
-Versie 3 oktober 2026
+Versie 10 oktober 2026
 
 Deze voorwaarden gelden voor elke aankoop van een vak en elk bod op het grote vlak via hethoekhuus.nl. Door te betalen of te bieden ga je akkoord met deze voorwaarden. Afwijkingen gelden alleen als we ze schriftelijk (ook per e-mail) met je hebben afgesproken. Algemene voorwaarden van de koper gelden niet.
 
@@ -45,16 +45,17 @@ De Muur van Het Hoekhuus is een aanbod van **KWW media**, handelend onder de naa
 - Wordt een betaling teruggedraaid (bijvoorbeeld een chargeback), dan vervalt je recht op het vak en mogen we je logo verwijderen. Het bedrag blijft dan verschuldigd, plus de kosten die wij daardoor maken.
 - Kennelijke fouten in prijzen of op de website binden ons niet.
 
-## 6. Logo aanleveren
+## 6. Logo, naam of foto aanleveren
 
-- Na de betaling stuur je je logo in via het formulier op de bedankpagina.
-- Bestand: liefst vector (SVG, PDF, AI of EPS). Een PNG mag als hij minimaal 150 dpi is op ware grootte (een vak van 20 cm is dan 1.200 pixels breed).
+- Na de betaling stuur je je logo, naam of foto in via het formulier op de bedankpagina. Hieronder heet dat samen "logo".
+- Bestand: liefst vector (SVG, PDF, AI of EPS). Een PNG, JPG of gewone foto mag als die minimaal 150 dpi is op ware grootte (een vak van 20 cm is dan 1.200 pixels breed).
 - Houd 2 cm rondom vrij van belangrijke tekst of details.
 - Lever je binnen 14 dagen na betaling geen bruikbaar logo aan, dan mogen we je bedrijfsnaam in een eenvoudig lettertype op het vak plaatsen. Daarmee hebben we onze verplichting volledig nagekomen.
 
 ## 7. Keuren en plaatsen
 
 - We beoordelen je logo binnen **5 werkdagen**. We mogen om een betere versie vragen.
+- We plakken alleen wat we zelf ook in beeld willen hebben; we mogen een afbeelding weigeren en dan krijg je je geld terug.
 - We plaatsen geen logo's of teksten die in strijd zijn met de wet of de goede zeden, die discriminerend, kwetsend of misleidend zijn, of die naar ons oordeel schadelijk zijn voor de naam van Het Hoekhuus. Ook reclame voor tabak, vapes, kansspelen, wapens, erotiek en politieke partijen plaatsen we niet.
 - Na goedkeuring plaatsen we je logo zo snel mogelijk, in de regel binnen **14 dagen**. Genoemde termijnen zijn streeftermijnen en geen fatale termijnen.
 - Na plaatsing sturen we je een foto. Dat is het bewijs van levering.

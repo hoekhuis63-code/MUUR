@@ -1,10 +1,12 @@
 import Papa from 'papaparse';
 import { SPOT_STATUSES, SPOT_TYPES } from './types';
-import type { Bid, SiteConfig, Spot, SpotStatus, SpotType, WallData } from './types';
+import type { Bid, Purchase, SiteConfig, Spot, SpotStatus, SpotType, WallData } from './types';
 
 export const WALL_WIDTH_CM = 320;
 export const WALL_HEIGHT_CM = 230;
 export const REFRESH_INTERVAL_MS = 60_000;
+/** Hoe lang een aankoop als "net gekocht" telt. */
+const RECENT_MS = 3 * 24 * 60 * 60 * 1000;
 const FETCH_TIMEOUT_MS = 5_000;
 const FALLBACK_URL = '/spots.json';
 
@@ -208,7 +210,8 @@ export async function loadWallData(previous?: WallData): Promise<WallData> {
     }
   }
   if (spots.length === 0) throw new Error('Geen geldige vakken gevonden');
-  spots = applySold(spots, await loadSold());
+  const sold = await loadSold();
+  spots = applySold(spots, sold);
 
   return {
     spots,
@@ -220,13 +223,27 @@ export async function loadWallData(previous?: WallData): Promise<WallData> {
     source,
     updatedAt:
       spotsResult.status === 'fulfilled' ? new Date() : (previous?.updatedAt ?? new Date()),
+    recent: recentPurchases(sold),
   };
 }
 
 interface SoldEntry {
   vak: string;
+  /** Leeg als de koper geen toestemming gaf om de naam te tonen. */
   koper: string;
   verkocht_op: string;
+  tijd?: string;
+}
+
+function recentPurchases(sold: SoldEntry[]): Purchase[] {
+  const now = Date.now();
+  return sold
+    .filter((s): s is SoldEntry & { tijd: string } => {
+      const t = Date.parse(s.tijd ?? '');
+      return t > now - RECENT_MS && t <= now + 60_000;
+    })
+    .sort((a, b) => Date.parse(b.tijd) - Date.parse(a.tijd))
+    .map(({ vak, koper, tijd }) => ({ vak, koper, tijd }));
 }
 
 /** Betaalde vakken uit Stripe (via /api/verkocht). Faalt stil: dan blijft de stand uit spots.json. */
@@ -259,16 +276,6 @@ function applySold(spots: Spot[], sold: SoldEntry[]): Spot[] {
 
 export function isTaken(spot: Spot): boolean {
   return spot.status === 'bezet' || spot.status === 'verkocht';
-}
-
-export function progress(spots: Spot[]) {
-  const forSale = spots.filter((s) => s.status !== 'geblokkeerd');
-  const taken = forSale.filter(isTaken);
-  return {
-    raised: taken.reduce((sum, s) => sum + s.prijs_eur, 0),
-    sold: taken.length,
-    total: forSale.length,
-  };
 }
 
 export function auctionState(bids: Bid[], config: SiteConfig, now: number) {

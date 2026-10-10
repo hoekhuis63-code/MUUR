@@ -113,6 +113,8 @@ function idempotencyKey(row, kind) {
     toNumber(row.h_cm),
     siteUrl,
     'stripe-tax',
+    // Andere velden op de link = nieuwe link (anders geeft Stripe de oude terug).
+    ...(kind.startsWith('link') ? ['naamopsite'] : []),
   ]);
   const hash = createHash('sha256').update(fingerprint).digest('hex').slice(0, 12);
   return `muur-${mode}-${row.id}-${kind}-${hash}`;
@@ -154,6 +156,19 @@ function paymentLinkParams(row, priceId) {
         label: { type: 'custom', custom: 'Waar zag je ons?' },
         type: 'dropdown',
         dropdown: { options: HERKOMST_OPTIES },
+      },
+      {
+        // Gelezen door api/verkocht.js: alleen bij "ja" tonen we de naam op de site.
+        key: 'naamopsite',
+        label: { type: 'custom', custom: 'Mag je naam op de site?' },
+        type: 'dropdown',
+        dropdown: {
+          default_value: 'ja',
+          options: [
+            { label: 'Ja, laat mijn naam zien', value: 'ja' },
+            { label: 'Nee, liever anoniem', value: 'nee' },
+          ],
+        },
       },
     ],
     // Stripe Tax: btw automatisch bovenop de prijs excl. btw (vereist Stripe Tax in het Dashboard).
