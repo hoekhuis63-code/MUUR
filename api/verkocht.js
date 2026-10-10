@@ -3,6 +3,8 @@
 // Leest alleen (sleutel STRIPE_READ_KEY: restricted key met "Checkout Sessions: Read").
 // Kort gecachet aan de rand, zodat Stripe niet bij elke bezoeker wordt bevraagd.
 
+import { isEchteVerkoop } from './_lib/test-aankopen.js';
+
 const STRIPE_API = 'https://api.stripe.com/v1/checkout/sessions';
 
 export async function GET() {
@@ -23,7 +25,7 @@ export async function GET() {
       const body = await res.json();
       for (const s of body.data) {
         const vak = s.metadata?.vak;
-        if (!vak || s.payment_status !== 'paid') continue;
+        if (!vak || s.payment_status !== 'paid' || !isEchteVerkoop(vak, s.created)) continue;
         const prev = perVak.get(vak);
         if (prev && prev.created <= s.created) continue;
         const cd = s.customer_details ?? {};

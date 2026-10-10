@@ -4,7 +4,7 @@
 
 Versie 3 oktober 2026
 
-Deze voorwaarden gelden voor elke aankoop van een vak en elk bod op The Spot via hethoekhuus.nl. Door te betalen of te bieden ga je akkoord met deze voorwaarden. Afwijkingen gelden alleen als we ze schriftelijk (ook per e-mail) met je hebben afgesproken. Algemene voorwaarden van de koper gelden niet.
+Deze voorwaarden gelden voor elke aankoop van een vak en elk bod op het grote vlak via hethoekhuus.nl. Door te betalen of te bieden ga je akkoord met deze voorwaarden. Afwijkingen gelden alleen als we ze schriftelijk (ook per e-mail) met je hebben afgesproken. Algemene voorwaarden van de koper gelden niet.
 
 ## 1. Wie wij zijn
 
@@ -18,13 +18,13 @@ De Muur van Het Hoekhuus is een aanbod van **KWW media**, handelend onder de naa
 - **Consument:** een koper die niet handelt voor zijn bedrijf of beroep.
 - **De muur:** de binnenmuur van circa 320 x 230 cm in Het Hoekhuus waarop de vakken zitten.
 - **Vak:** een afgebakend deel van de muur met een eigen code (bijvoorbeeld T07), maat en prijs, zoals getoond op hethoekhuus.nl.
-- **The Spot:** het grootste vak (S1), dat via een veiling wordt verkocht.
+- **Het grote vlak:** het grootste vak (41) in het midden van de muur, dat via een veiling wordt verkocht.
 - **Looptijd:** de periode van 3 maanden waarin we garanderen dat je logo op de muur hangt (artikel 8).
 
 ## 3. Totstandkoming
 
 - De koop komt tot stand zodra je betaling is gelukt. Vanaf dat moment staat de koop vast.
-- Een bod op The Spot is een onherroepelijk aanbod. De koop komt tot stand zodra wij je bod aan het einde van de veiling gunnen.
+- Een bod op het grote vlak is een onherroepelijk aanbod. De koop komt tot stand zodra wij je bod aan het einde van de veiling gunnen.
 - Koop of bied je namens een bedrijf, dan verklaar je dat je bevoegd bent om dat bedrijf te binden.
 - We communiceren per e-mail. Je zorgt dat je e-mailadres klopt en dat je bereikbaar bent.
 
@@ -83,17 +83,17 @@ De Muur van Het Hoekhuus is een aanbod van **KWW media**, handelend onder de naa
 - **Verwijderen na plaatsing:** handel je in strijd met deze voorwaarden, raak je failliet of brengt je bedrijf de naam van Het Hoekhuus naar ons oordeel in diskrediet, dan mogen we je logo verwijderen zonder terugbetaling.
 - Terugbetalingen gaan via Stripe naar dezelfde betaalmethode, binnen 14 dagen.
 
-## 11. Veiling van The Spot
+## 11. Veiling van het grote vlak
 
-- Het startbod is **€3.000** (excl. btw). Elk nieuw bod is minimaal **€250** hoger dan het hoogste bod.
+- Het startbod is **€500** (excl. btw). Elk nieuw bod is minimaal **€50** hoger dan het hoogste bod.
 - Alleen bedrijven met een KvK-nummer (of een buitenlands equivalent) kunnen bieden.
 - Een bod is **bindend** en kan niet worden ingetrokken.
 - We tonen het hoogste bod en de naam van de bieder op de website en in onze video's. Door te bieden ga je daarmee akkoord.
 - De veiling heeft een vast einde, zonder verlenging. Bij twijfel over het tijdstip van een bod geldt onze registratie.
 - We mogen biedingen weigeren of laten vervallen, de veiling verlengen, onderbreken of stoppen, zonder dat iemand daar rechten aan kan ontlenen.
 - De winnaar krijgt een eigen betaallink en betaalt binnen **48 uur**.
-- Betaalt de winnaar niet binnen 48 uur, dan is hij zonder ingebrekestelling direct een boete verschuldigd van **50% van zijn winnende bod** (excl. btw). Daarnaast mogen we The Spot aan een andere bieder gunnen en blijft de winnaar aansprakelijk voor verdere schade en incassokosten.
-- Na betaling gelden voor The Spot dezelfde regels als voor de andere vakken, inclusief de looptijd van 3 maanden.
+- Betaalt de winnaar niet binnen 48 uur, dan is hij zonder ingebrekestelling direct een boete verschuldigd van **50% van zijn winnende bod** (excl. btw). Daarnaast mogen we het grote vlak aan een andere bieder gunnen en blijft de winnaar aansprakelijk voor verdere schade en incassokosten.
+- Na betaling gelden voor het grote vlak dezelfde regels als voor de andere vakken, inclusief de looptijd van 3 maanden.
 
 ## 12. Bereik en video's
 

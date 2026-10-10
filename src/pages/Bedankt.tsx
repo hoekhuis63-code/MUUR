@@ -17,7 +17,7 @@ export function Bedankt() {
     const text =
       kind === 'eigen'
         ? `Wij staan op de muur van Het Hoekhuus! Vak ${vak} is van ons.`
-        : 'Zet je bedrijf op de muur van Het Hoekhuus, vanaf €75.';
+        : 'Zet je bedrijf op de muur van Het Hoekhuus, vanaf €25 (excl. btw).';
     trackEvent('deel_bedankt', { soort: kind });
     try {
       if (navigator.share)

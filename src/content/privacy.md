@@ -16,7 +16,7 @@ Versie: 2 oktober 2026
 - Bedrijfsgegevens, waaronder bedrijfsnaam, KvK-nummer en btw-nummer
 - Factuuradres
 - Je logo en website
-- Je bod, als je meebiedt op The Spot
+- Je bod, als je meebiedt op het grote vlak
 
 ## Waarvoor we ze gebruiken
 

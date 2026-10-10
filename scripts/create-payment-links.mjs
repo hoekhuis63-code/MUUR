@@ -20,6 +20,7 @@
 // Stripe het aanmaken van de betaallink; het script herkent die fout en geeft een tip.
 import 'dotenv/config';
 import { createHash } from 'node:crypto';
+import { isEchteVerkoop } from '../api/_lib/test-aankopen.js';
 import { writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -30,7 +31,7 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUTPUT = resolve(ROOT, 'spots_met_links.csv');
 
 const TYPE_LABELS = {
-  spot: 'The Spot',
+  spot: 'het grote vlak',
   xl: 'extra groot',
   l: 'groot',
   m: 'vierkant',
@@ -141,7 +142,8 @@ function paymentLinkParams(row, priceId) {
         metadata: { vak },
       },
     },
-    name_collection: { business: { enabled: true, optional: false } },
+    // Bedrijfsnaam optioneel: ook particulieren kunnen kopen.
+    name_collection: { business: { enabled: true, optional: true } },
     // Btw-nummer vragen, maar niet verplicht (required: 'if_supported' zou het verplicht maken).
     tax_id_collection: { enabled: true },
     billing_address_collection: 'required',
@@ -235,7 +237,13 @@ const verkochteVakken = new Set();
 const actieveLinks = new Map(); // vak -> [{ id, url }]
 if (!dryRun) {
   for await (const s of stripe.checkout.sessions.list({ status: 'complete', limit: 100 })) {
-    if (s.payment_status === 'paid' && s.metadata?.vak) verkochteVakken.add(String(s.metadata.vak));
+    if (
+      s.payment_status === 'paid' &&
+      s.metadata?.vak &&
+      isEchteVerkoop(s.metadata.vak, s.created)
+    ) {
+      verkochteVakken.add(String(s.metadata.vak));
+    }
   }
   for await (const l of stripe.paymentLinks.list({ active: true, limit: 100 })) {
     const vak = l.metadata?.vak;

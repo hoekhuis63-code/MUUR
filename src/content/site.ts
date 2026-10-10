@@ -58,12 +58,12 @@ export function faq(looptijd: string) {
       a: 'Elke betaallink sluit na één betaling. Rondt iemand toch tegelijk af, dan gaat het vak naar de eerste betaling. De tweede koper kiest een ander vak met dezelfde of een lagere prijs, of krijgt het bedrag terug.',
     },
     {
-      q: 'Hoe werkt de veiling van The Spot?',
-      a: 'Het startbod is €3.000 en elk bod moet minimaal €250 hoger zijn dan het hoogste bod. Bieden is bindend en alleen voor bedrijven met een KvK-nummer. De veiling heeft een vast einde. De winnaar krijgt een eigen betaallink en betaalt binnen 48 uur; anders volgt een boete van 50% van het bod. Het hoogste bod en de naam van de bieder tonen we op de site.',
+      q: 'Hoe werkt de veiling van het grote vlak?',
+      a: 'Het startbod is €500 (excl. btw) en elk bod moet minimaal €50 hoger zijn dan het hoogste bod. Bieden is bindend en alleen voor bedrijven met een KvK-nummer. De veiling heeft een vast einde. De winnaar krijgt een eigen betaallink en betaalt binnen 48 uur; anders volgt een boete van 50% van het bod. Het hoogste bod en de naam van de bieder tonen we op de site.',
     },
     {
       q: 'Kan ik als particulier een vak kopen?',
-      a: 'De muur is bedoeld voor bedrijven. Koop je als particulier, dan heb je 14 dagen bedenktijd. Die vervalt zodra je logo op jouw verzoek is geplaatst.',
+      a: 'Ja, iedereen kan een vak kopen, ook zonder bedrijf: zet je naam, een boodschap of een tekening op de muur. Prijzen staan excl. btw, met het bedrag incl. 21% btw ernaast. Als particulier heb je 14 dagen bedenktijd; die vervalt zodra je logo op jouw verzoek is geplaatst.',
     },
   ];
 }

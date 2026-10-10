@@ -2,20 +2,19 @@
 
 > **Snel starten:** zie [JOUW-TAKEN.md](JOUW-TAKEN.md) voor de stappen die alleen jij kunt doen. Openbare instellingen (CSV-links, Tally-ID's) staan in `.env.production` in de repo; Vercel heeft dan geen env-variabelen nodig. Betaallinks maken kan ook zonder installatie via GitHub Actions (workflow _Stripe-betaallinks_, secrets `STRIPE_SECRET_KEY_TEST` / `STRIPE_SECRET_KEY_LIVE`, optionele variabelen `VITE_SPOTS_CSV_URL` en `SITE_URL`). De beheersheet staat in Drive > 0.5 Content > _Muur van Het Hoekhuus · beheer_.
 
-Met vrienden kochten we een voormalig café van €500.000 en verbouwen we het voor minder dan €100.000: en dat delen we op TikTok ([@hethoekhuis](https://www.tiktok.com/@hethoekhuis)), Instagram ([@hethoekhuus](https://www.instagram.com/hethoekhuus)) en Facebook. Op een echte binnenmuur van **320 x 230 cm** verkopen we reclamevakken: het logo van de koper komt er als matte vinylsticker op. Deze site (hethoekhuus.nl) toont de muur, de vrije vakken, de betaallinks en de veiling van The Spot.
+Met vrienden kochten we een voormalig café van €500.000 en verbouwen we het voor minder dan €100.000: en dat delen we op TikTok ([@hethoekhuis](https://www.tiktok.com/@hethoekhuis)), Instagram ([@hethoekhuus](https://www.instagram.com/hethoekhuus)) en Facebook. Op een echte binnenmuur van **320 x 230 cm** verkopen we reclamevakken: het logo van de koper komt er als matte vinylsticker op. Deze site (hethoekhuus.nl) toont de muur, de vrije vakken, de betaallinks en de veiling van het grote vlak.
 
 Alle prijzen zijn **exclusief btw (21%)**.
 
-| Vak           | Maat (cm)  | Prijs                    | Aantal |
-| ------------- | ---------- | ------------------------ | ------ |
-| The Spot (S1) | 100 x 80   | veiling, vanaf €5.000    | 1      |
-| XL1–XL3       | 80 x 40    | €1.999                   | 3      |
-| L1–L3         | 60 x 40    | €1.499                   | 3      |
-| M1–M4         | 40 x 40    | €999                     | 4      |
-| B01–B10       | 40 x 20    | €499                     | 10     |
-| T01–T39       | 20 x 20    | €249                     | 39     |
-| X1            | [INVULLEN] | [INVULLEN] (geblokkeerd) | 1      |
-| **Totaal**    |            |                          | **61** |
+| Prijsklasse    | Vakken                                     | Prijs (excl. btw)                 | Aantal |
+| -------------- | ------------------------------------------ | --------------------------------- | ------ |
+| Tegels         | 1–30, 63–94                                | €25                               | 62     |
+| Smalle stroken | 37, 38, 43, 44, 47, 48                     | €50                               | 6      |
+| Middelgroot    | 31, 33–35, 39, 45, 49, 52–54, 57, 60–62    | €100                              | 14     |
+| Groot          | 32, 36, 40, 42, 46, 50, 51, 55, 56, 58, 59 | €250                              | 11     |
+| Het grote vlak | 41                                         | veiling vanaf €500 (+€50 per bod) | 1      |
+
+Totaal bij uitverkoop: €6.500 excl. btw (meer als het grote vlak boven €500 gaat).
 
 **Techniek:** statische Vite + React + TypeScript + Tailwind-site op Vercel (SPA-fallback via `vercel.json` voor `/bedankt`, `/voorwaarden` en `/privacy`). Er is geen backend of database: een **Google Sheet is de enige bron van waarheid én het beheerpaneel**. Betalen gaat via Stripe Payment Links, logo's en biedingen via Tally-formulieren.
 

@@ -51,7 +51,7 @@ export function AuctionBlock({ spot, bids, config, onBid }: Props) {
       />
       <p className="text-sm font-bold tracking-wider text-oranje-licht uppercase">Veiling</p>
       <h2 id="veiling-titel" className="mt-1 font-display text-4xl font-extrabold sm:text-5xl">
-        The Spot
+        Het grote vlak
       </h2>
       <p className="mt-1 text-blue-100">
         Het grootste vak: {spot ? `${spot.w_cm} x ${spot.h_cm} cm` : '85 x 99 cm'}, midden op de

@@ -73,7 +73,7 @@ export function BidForm({ minimum, onClose, onPlaced }: Props) {
       >
         <div className="flex items-start justify-between gap-3">
           <div>
-            <p className="eyebrow">The Spot</p>
+            <p className="eyebrow">Het grote vlak</p>
             <h2
               id="bod-titel"
               ref={headingRef}

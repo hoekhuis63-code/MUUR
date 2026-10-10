@@ -1,4 +1,4 @@
-// Vercel Function: biedingen op The Spot.
+// Vercel Function: biedingen op het grote vlak.
 // GET  /api/bod -> { biedingen: [{ tijd, bedrijf, bod_eur }] } (alleen openbare velden)
 // POST /api/bod  (JSON) -> slaat een geldig bod privé op in Vercel Blob en mailt een melding.
 // Env: BLOB_READ_WRITE_TOKEN (automatisch na koppelen Blob-store), RESEND_API_KEY.
@@ -80,9 +80,9 @@ export async function POST(request) {
   await stuurMail({
     to: meldingAdres(),
     replyTo: bod.email,
-    subject: `Nieuw bod op The Spot: ${bedrag} van ${bod.bedrijf}`,
+    subject: `Nieuw bod op het grote vlak: ${bedrag} van ${bod.bedrijf}`,
     html:
-      tabelHtml('Nieuw bod op The Spot', [
+      tabelHtml('Nieuw bod op het grote vlak', [
         ['Bod', bedrag],
         ['Bedrijf', bod.bedrijf],
         ['KvK', bod.kvk],
@@ -98,7 +98,7 @@ export async function POST(request) {
     await stuurMail({
       to: bod.email,
       replyTo: meldingAdres(),
-      subject: `Je bod op The Spot: ${bedrag}`,
+      subject: `Je bod op het grote vlak: ${bedrag}`,
       html: `<div style="font-family:system-ui,sans-serif"><p>Hoi ${escapeHtml(bod.naam)},</p><p>We hebben je bod van <strong>${bedrag}</strong> namens ${escapeHtml(bod.bedrijf)} ontvangen. Je bod is bindend (artikel 11 van onze voorwaarden). De veiling sluit op zondag 18 oktober om 20:00.</p><p>Volg de stand op <a href="https://hethoekhuus.nl/#veiling">hethoekhuus.nl</a>.</p><p>Het Hoekhuus</p></div>`,
     });
   }

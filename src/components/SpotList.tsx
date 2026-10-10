@@ -1,5 +1,5 @@
 import { TYPE_COLORS } from '../lib/colors';
-import { TYPE_LABELS, euro } from '../lib/format';
+import { TYPE_LABELS, euro, inclBtw } from '../lib/format';
 import type { Spot, SpotType } from '../lib/types';
 
 const ORDER: SpotType[] = ['xl', 'l', 'm', 'b', 't'];
@@ -28,7 +28,7 @@ export function SpotList({ spots, onSelect }: { spots: Spot[]; onSelect: (id: st
                 aria-hidden="true"
               />
               {TYPE_LABELS[type]} · {first.w_cm} x {first.h_cm} cm · {euro(first.prijs_eur)} excl.
-              btw
+              btw ({inclBtw(first.prijs_eur)} incl.)
               <span className="font-normal text-stone-600">({list.length} vrij)</span>
             </h3>
             <ul className="grid grid-cols-3 gap-2 sm:grid-cols-5 md:grid-cols-8">

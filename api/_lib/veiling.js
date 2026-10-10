@@ -1,9 +1,9 @@
-// Regels van de veiling van The Spot (artikel 11 van de voorwaarden). Puur en testbaar.
+// Regels van de veiling van het grote vlak (artikel 11 van de voorwaarden). Puur en testbaar.
 
 export const VEILING = {
   eind: Date.parse(process.env.VEILING_EIND || '2026-10-18T20:00:00+02:00'),
-  startbod: Number(process.env.VEILING_STARTBOD || 3000),
-  verhoging: Number(process.env.VEILING_VERHOGING || 250),
+  startbod: Number(process.env.VEILING_STARTBOD || 500),
+  verhoging: Number(process.env.VEILING_VERHOGING || 50),
 };
 
 export function minimumBod(hoogste, regels = VEILING) {

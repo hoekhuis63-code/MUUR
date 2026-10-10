@@ -14,7 +14,7 @@ async function fetchBids(): Promise<Bid[] | undefined> {
   }
 }
 
-/** Biedingen op The Spot uit /api/bod, elke 15 s ververst (ook bij terugkeren naar het tabblad). */
+/** Biedingen op het grote vlak uit /api/bod, elke 15 s ververst (ook bij terugkeren naar het tabblad). */
 export function useBids() {
   const [bids, setBids] = useState<Bid[]>([]);
 

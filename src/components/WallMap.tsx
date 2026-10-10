@@ -330,7 +330,7 @@ function SpotShape({ spot, pxPerCm, selected, auctionLabel, onActivate, onKey }:
       lines = ['bezet'];
       break;
     case 'veiling':
-      lines = ['The Spot', auctionLabel];
+      lines = ['Het grote vlak', auctionLabel];
       break;
     case 'geblokkeerd':
       lines = [id];

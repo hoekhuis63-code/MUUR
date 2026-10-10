@@ -19,7 +19,7 @@ export function SiteNav() {
             href="/#veiling"
             className="hidden px-2 font-semibold text-navy hover:text-oranje sm:inline"
           >
-            The Spot
+            Het grote vlak
           </a>
           <a
             href="/#zo-werkt-het"

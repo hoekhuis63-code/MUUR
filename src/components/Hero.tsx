@@ -18,13 +18,13 @@ export function Hero({ progress }: { progress: ReactNode }) {
               Kies je vak
             </a>
             <a href="#veiling" className="btn-secondary min-h-12 sm:w-auto sm:px-6">
-              Bied op The Spot
+              Bied op het grote vlak
             </a>
           </div>
           <dl className="grid grid-cols-3 gap-2 pt-2">
             {[
               ['94', 'vakken'],
-              ['€75', 'vanaf, excl. btw'],
+              ['€25', 'vanaf, excl. btw'],
               ['1,1M+', 'views op onze start'],
             ].map(([value, label]) => (
               <div key={label} className="rounded-2xl bg-white/70 px-3 py-3 text-center">

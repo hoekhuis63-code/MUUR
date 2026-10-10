@@ -1,13 +1,17 @@
 import { TAKEN_COLOR, TYPE_COLORS } from '../lib/colors';
-import { euro } from '../lib/format';
+import { euro, inclBtw } from '../lib/format';
 import type { Spot } from '../lib/types';
 
 export function Legend({ spots }: { spots: Spot[] }) {
   const free = spots.filter((s) => s.status === 'vrij' && s.prijs_eur > 0);
   const min = free.length ? Math.min(...free.map((s) => s.prijs_eur)) : 0;
   const items: { key: string; color: string; label: string }[] = [
-    { key: 'vrij', color: TYPE_COLORS.t.fill, label: `Beschikbaar · vanaf ${euro(min)}` },
-    { key: 'spot', color: TYPE_COLORS.spot.fill, label: 'The Spot · veiling' },
+    {
+      key: 'vrij',
+      color: TYPE_COLORS.t.fill,
+      label: `Beschikbaar · vanaf ${euro(min)} excl. btw (${inclBtw(min)} incl.)`,
+    },
+    { key: 'spot', color: TYPE_COLORS.spot.fill, label: 'Het grote vlak · veiling' },
     { key: 'bezet', color: TAKEN_COLOR.fill, label: 'Bezet' },
   ];
 

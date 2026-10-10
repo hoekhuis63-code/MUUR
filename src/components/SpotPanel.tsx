@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { claimUrl, getSource, trackEvent } from '../lib/claim';
-import { STATUS_LABELS, TYPE_LABELS, euro, size } from '../lib/format';
+import { STATUS_LABELS, TYPE_LABELS, euro, size, inclBtw } from '../lib/format';
 import type { Spot } from '../lib/types';
 import { WallPhoto } from './WallPhoto';
 
@@ -8,7 +8,7 @@ interface Props {
   spot: Spot;
   onClose: () => void;
   onBid?: () => void;
-  /** Bijv. "Hoogste bod €5.250" voor The Spot. */
+  /** Bijv. "Hoogste bod €5.250" voor het grote vlak. */
   auction?: { label: string; amount: number };
 }
 
@@ -92,7 +92,7 @@ export function SpotPanel({ spot, onClose, onBid, auction }: Props) {
         <dd className="font-semibold">
           {spot.status === 'geblokkeerd'
             ? 'volgt'
-            : `${euro(isAuction && auction ? auction.amount : spot.prijs_eur)} excl. btw`}
+            : `${euro(isAuction && auction ? auction.amount : spot.prijs_eur)} excl. btw (${inclBtw(isAuction && auction ? auction.amount : spot.prijs_eur)} incl.)`}
         </dd>
         <dt className="text-stone-600">Status</dt>
         <dd className="font-semibold">{STATUS_LABELS[spot.status]}</dd>
