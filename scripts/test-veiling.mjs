@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import { controleerBod, minimumBod } from '../api/_lib/veiling.js';
 
-const regels = { eind: Date.parse('2026-10-18T20:00:00+02:00'), startbod: 500, verhoging: 50 };
+const regels = { eind: Date.parse('2026-10-25T20:00:00+01:00'), startbod: 500, verhoging: 50 };
 const nu = Date.parse('2026-10-05T12:00:00+02:00');
 const goed = {
   bedrijf: 'Bakkerij De Hoek',

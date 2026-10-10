@@ -1,43 +1,35 @@
 const ITEMS = [
-  ['Je logo, naam of foto 3 maanden op onze muur', 'Echte muur, echte sticker. Geen pixels.'],
-  [
-    'In beeld in elke video die we bij de muur opnemen',
-    'En daar staan we vaak. Er moet nog veel gebeuren.',
-  ],
-  ['Je komt in onze volgende video', 'Kort, maar je zit erin.'],
-  ['Een vermelding op onze socials', 'Instagram en TikTok. Met naam en al.'],
-  [
-    'Je mag een keer langskomen bij Het Hoekhuus',
-    'Kijken of je recht hangt. Koffie is er. Een stoel misschien.',
-  ],
-  ['Een biertje zodra onze bar af is', 'Dat kan nog even duren.'],
-] as const;
+  'Je logo, naam of foto 3 maanden op onze muur',
+  'In beeld in elke video die we bij de muur opnemen',
+  'Je komt in onze volgende video',
+  'Een vermelding op onze socials',
+  'Je mag een keer langskomen bij Het Hoekhuus',
+  'Een biertje zodra onze bar af is (die is nog niet af, dus even geduld)',
+];
 
 export function WhatYouGet() {
   return (
-    <section id="wat-krijg-je" aria-labelledby="krijg-titel" className="scroll-mt-20">
-      <p className="eyebrow">Voor elk vak, vanaf €25</p>
-      <h2
-        id="krijg-titel"
-        className="mt-2 font-display text-3xl font-extrabold text-navy sm:text-4xl"
-      >
+    <section
+      id="wat-krijg-je"
+      aria-labelledby="krijg-titel"
+      className="card scroll-mt-20 p-5 sm:p-8"
+    >
+      <h2 id="krijg-titel" className="font-display text-2xl font-extrabold text-navy sm:text-3xl">
         Wat krijg je?
       </h2>
-      <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {ITEMS.map(([title, text], i) => (
-          <li key={title} className="card flex gap-4 p-5">
+      <p className="mt-1 text-ink/75">
+        Voor iedereen hetzelfde, of je nu €25 of €250 betaalt. Bedrijf, hond of oma: mag allemaal.
+      </p>
+      <ol className="mt-4 grid gap-x-6 gap-y-2.5 sm:grid-cols-2">
+        {ITEMS.map((item, i) => (
+          <li key={item} className="flex gap-3">
             <span
-              className="w-7 shrink-0 font-display text-4xl leading-none font-extrabold text-oranje-licht/90"
+              className="grid size-7 shrink-0 place-items-center rounded-full bg-merk-oranje font-display text-sm font-extrabold text-white"
               aria-hidden="true"
             >
               {i + 1}
             </span>
-            <div>
-              <h3 className="font-display text-lg leading-snug font-extrabold text-navy">
-                {title}
-              </h3>
-              <p className="mt-1 text-ink/80">{text}</p>
-            </div>
+            <span className="pt-0.5 font-semibold text-ink">{item}</span>
           </li>
         ))}
       </ol>

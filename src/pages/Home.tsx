@@ -73,6 +73,10 @@ export function Home() {
 
   const auction = data ? auctionState(bids, config, 0) : undefined;
   const spotS1 = spots.find((s) => s.type === 'spot');
+  // Het grote vlak telt mee als vrij zolang de veiling loopt.
+  const freeCount = spots.filter(
+    (s) => (s.status === 'vrij' || s.status === 'veiling') && s.prijs_eur > 0,
+  ).length;
   const freeSpots = spots.filter((s) => s.status === 'vrij' && s.betaallink && s.prijs_eur > 0);
   const cheapest = freeSpots.reduce<(typeof spots)[number] | undefined>(
     (min, s) => (!min || s.prijs_eur < min.prijs_eur ? s : min),
@@ -95,8 +99,12 @@ export function Home() {
         Direct naar de muur
       </a>
       <SiteNav />
-      <Hero />
-      <main className="mx-auto max-w-5xl space-y-16 px-4 pt-12 pb-12 sm:space-y-24 sm:pt-16">
+      <Hero
+        vrij={data ? freeCount : undefined}
+        totaal={spots.filter((s) => s.prijs_eur > 0).length}
+      />
+      <main className="mx-auto max-w-5xl space-y-16 px-4 pt-6 pb-12 sm:space-y-24 sm:pt-10">
+        <WhatYouGet />
         <section
           id="muur"
           ref={mapRef}
@@ -194,7 +202,6 @@ export function Home() {
           )}
         </section>
 
-        <WhatYouGet />
         {data && <AuctionBlock spot={spotS1} bids={bids} config={config} onBid={openBid} />}
         <HowItWorks />
         <About config={config} />

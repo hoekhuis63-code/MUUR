@@ -18,7 +18,7 @@ const env = {
 
 /** Gebruikt als het config-tabblad (deels) ontbreekt. */
 export const DEFAULT_CONFIG: SiteConfig = {
-  veiling_eind: '2026-10-18T20:00:00+02:00',
+  veiling_eind: '2026-10-25T20:00:00+01:00',
   startbod_eur: 500,
   min_verhoging_eur: 50,
   looptijd: '3 maanden na plaatsing',

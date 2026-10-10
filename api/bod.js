@@ -99,7 +99,7 @@ export async function POST(request) {
       to: bod.email,
       replyTo: meldingAdres(),
       subject: `Je bod op het grote vlak: ${bedrag}`,
-      html: `<div style="font-family:system-ui,sans-serif"><p>Hoi ${escapeHtml(bod.naam)},</p><p>We hebben je bod van <strong>${bedrag}</strong> namens ${escapeHtml(bod.bedrijf)} ontvangen. Je bod is bindend (artikel 11 van onze voorwaarden). De veiling sluit op zondag 18 oktober om 20:00.</p><p>Volg de stand op <a href="https://hethoekhuus.nl/#veiling">hethoekhuus.nl</a>.</p><p>Het Hoekhuus</p></div>`,
+      html: `<div style="font-family:system-ui,sans-serif"><p>Hoi ${escapeHtml(bod.naam)},</p><p>We hebben je bod van <strong>${bedrag}</strong> namens ${escapeHtml(bod.bedrijf)} ontvangen. Je bod is bindend (artikel 11 van onze voorwaarden). De veiling sluit op zondag 25 oktober om 20:00.</p><p>Volg de stand op <a href="https://hethoekhuus.nl/#veiling">hethoekhuus.nl</a>.</p><p>Het Hoekhuus</p></div>`,
     });
   }
 

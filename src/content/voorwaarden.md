@@ -30,7 +30,13 @@ De Muur van Het Hoekhuus is een aanbod van **KWW media**, handelend onder de naa
 
 ## 4. Wat je koopt
 
-- Je koopt het recht dat je logo of bedrijfsnaam gedurende de looptijd als sticker op het gekozen vak hangt.
+- Je koopt het recht dat je logo, naam of foto gedurende de looptijd als sticker op het gekozen vak hangt.
+- Daarbij krijg je, voor elk vak hetzelfde:
+  - je vak is in beeld in de video's die we tijdens de looptijd bij de muur opnemen;
+  - je komt in onze eerstvolgende video over de muur;
+  - een vermelding op onze sociale media;
+  - een keer langskomen bij Het Hoekhuus. We plannen het samen met je in;
+  - een biertje (of iets zonder alcohol). Zodra de bar af is.
 - Je koopt geen eigendom van, en geen andere rechten op, de muur of het pand.
 - Wij bepalen de uitvoering: materiaal, afwerking, achtergrondkleur (standaard wit) en de exacte plaats van het logo binnen het vak. Kleine afwijkingen in kleur, maat en positie ten opzichte van het aangeleverde bestand of de kaart op de website zijn mogelijk en geven geen recht op terugbetaling.
 - De kaart op de website is een weergave. De werkelijke maat van een vak kan tot 3 cm afwijken.
@@ -55,7 +61,7 @@ De Muur van Het Hoekhuus is een aanbod van **KWW media**, handelend onder de naa
 ## 7. Keuren en plaatsen
 
 - We beoordelen je logo binnen **5 werkdagen**. We mogen om een betere versie vragen.
-- We plakken alleen wat we zelf ook in beeld willen hebben; we mogen een afbeelding weigeren en dan krijg je je geld terug.
+- We plakken alleen wat we zelf ook in beeld willen hebben. Weigeren we je afbeelding, dan krijg je je geld terug.
 - We plaatsen geen logo's of teksten die in strijd zijn met de wet of de goede zeden, die discriminerend, kwetsend of misleidend zijn, of die naar ons oordeel schadelijk zijn voor de naam van Het Hoekhuus. Ook reclame voor tabak, vapes, kansspelen, wapens, erotiek en politieke partijen plaatsen we niet.
 - Na goedkeuring plaatsen we je logo zo snel mogelijk, in de regel binnen **14 dagen**. Genoemde termijnen zijn streeftermijnen en geen fatale termijnen.
 - Na plaatsing sturen we je een foto. Dat is het bewijs van levering.
@@ -98,8 +104,8 @@ De Muur van Het Hoekhuus is een aanbod van **KWW media**, handelend onder de naa
 
 ## 12. Bereik en video's
 
-- We delen de verbouwing op onder meer TikTok, Instagram en Facebook. We geven **geen garantie** op bereik, weergaven, volgers, klikken, omzet of vermelding in een bepaalde video.
-- Of, wanneer en hoe we je logo laten zien in video's bepalen wij.
+- We delen de verbouwing op onder meer TikTok, Instagram en Facebook. We geven **geen garantie** op bereik, weergaven, volgers, klikken of omzet.
+- Hoe groot, hoe lang en op welk moment je in beeld komt, bepalen wij.
 - We zijn niet verantwoordelijk voor maatregelen van sociale-mediaplatformen, zoals het beperken of verwijderen van een video of account.
 - Video's waarin kopers in beeld komen, markeren we waar nodig als reclame of betaalde samenwerking.
 

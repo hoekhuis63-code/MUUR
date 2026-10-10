@@ -15,9 +15,10 @@ function sanitize(value: string): string {
   return value.replace(/[^A-Za-z0-9_-]/g, '').slice(0, 40);
 }
 
-/** Bewaart utm_source uit de URL waarmee de bezoeker binnenkwam (één keer per sessie). */
+/** Bewaart ?bron= of utm_source uit de URL waarmee de bezoeker binnenkwam (één keer per sessie). */
 export function rememberSource(): void {
-  const bron = sanitize(new URLSearchParams(window.location.search).get('utm_source') ?? '');
+  const params = new URLSearchParams(window.location.search);
+  const bron = sanitize(params.get('bron') ?? params.get('utm_source') ?? '').toLowerCase();
   if (!bron) return;
   try {
     if (!sessionStorage.getItem(BRON_KEY)) sessionStorage.setItem(BRON_KEY, bron);

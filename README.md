@@ -105,7 +105,7 @@ Kolommen `key` en `value`:
 
 | key                 | Voorbeeld value                                      |
 | ------------------- | ---------------------------------------------------- |
-| `veiling_eind`      | `2026-10-18T20:00:00+02:00`                          |
+| `veiling_eind`      | `2026-10-25T20:00:00+01:00`                          |
 | `startbod_eur`      | `5000`                                               |
 | `min_verhoging_eur` | `250`                                                |
 | `looptijd`          | `zolang het Hoekhuus van ons is, en minimaal 2 jaar` |

@@ -100,7 +100,7 @@ export function BidForm({ minimum, onClose, onPlaced }: Props) {
               de hoogste bieder.
             </p>
             <p className="text-ink/80">
-              Wordt je overboden, dan kun je opnieuw bieden. De veiling sluit zondag 18 oktober om
+              Wordt je overboden, dan kun je opnieuw bieden. De veiling sluit zondag 25 oktober om
               20:00. We nemen contact met je op als je wint.
             </p>
             <button type="button" className="btn-primary" onClick={onClose}>

@@ -63,7 +63,10 @@ export function SpotPanel({ spot, onClose, onBid, auction }: Props) {
     >
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-sm font-medium text-stone-600">{TYPE_LABELS[spot.type]}</p>
+          <p className="text-sm font-medium text-stone-600">
+            {TYPE_LABELS[spot.type]}
+            {spot.type === 'spot' && ' · er is er maar één'}
+          </p>
           <h2
             id="spot-panel-title"
             ref={headingRef}

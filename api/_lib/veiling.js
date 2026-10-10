@@ -1,7 +1,7 @@
 // Regels van de veiling van het grote vlak (artikel 11 van de voorwaarden). Puur en testbaar.
 
 export const VEILING = {
-  eind: Date.parse(process.env.VEILING_EIND || '2026-10-18T20:00:00+02:00'),
+  eind: Date.parse(process.env.VEILING_EIND || '2026-10-25T20:00:00+01:00'),
   startbod: Number(process.env.VEILING_STARTBOD || 500),
   verhoging: Number(process.env.VEILING_VERHOGING || 50),
 };

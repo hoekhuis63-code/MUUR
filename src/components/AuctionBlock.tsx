@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { auctionState } from '../lib/data';
 import { euro } from '../lib/format';
 import type { Bid, SiteConfig, Spot } from '../lib/types';
-import { Countdown } from './Countdown';
 
 interface Props {
   spot?: Spot;
@@ -31,7 +30,7 @@ const endFormatter = new Intl.DateTimeFormat('nl-NL', {
 export function AuctionBlock({ spot, bids, config, onBid }: Props) {
   const [now, setNow] = useState(() => Date.now());
   useEffect(() => {
-    const timer = window.setInterval(() => setNow(Date.now()), 1000);
+    const timer = window.setInterval(() => setNow(Date.now()), 30_000);
     return () => window.clearInterval(timer);
   }, []);
 
@@ -49,7 +48,9 @@ export function AuctionBlock({ spot, bids, config, onBid }: Props) {
         aria-hidden="true"
         className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-oranje-licht to-merk-oranje"
       />
-      <p className="text-sm font-bold tracking-wider text-oranje-licht uppercase">Veiling</p>
+      <p className="text-sm font-bold tracking-wider text-oranje-licht uppercase">
+        Veiling · er is er maar één
+      </p>
       <h2 id="veiling-titel" className="mt-1 font-display text-4xl font-extrabold sm:text-5xl">
         Het grote vlak
       </h2>
@@ -74,8 +75,10 @@ export function AuctionBlock({ spot, bids, config, onBid }: Props) {
             <p className="text-2xl font-extrabold">Veiling gesloten</p>
           ) : state.end ? (
             <>
-              <p className="mb-1 text-sm text-blue-100">Sluit {endFormatter.format(state.end)}</p>
-              <Countdown end={state.end} now={now} />
+              <p className="text-sm text-blue-100">Veiling sluit</p>
+              <p className="font-display text-2xl font-extrabold first-letter:uppercase">
+                {endFormatter.format(state.end)}
+              </p>
             </>
           ) : (
             <p className="text-blue-100">Einddatum volgt.</p>

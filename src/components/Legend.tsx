@@ -11,7 +11,7 @@ export function Legend({ spots }: { spots: Spot[] }) {
       color: TYPE_COLORS.t.fill,
       label: `Beschikbaar · vanaf ${euro(min)} excl. btw (${inclBtw(min)} incl.)`,
     },
-    { key: 'spot', color: TYPE_COLORS.spot.fill, label: 'Het grote vlak · veiling' },
+    { key: 'spot', color: TYPE_COLORS.spot.fill, label: 'Het grote vlak · er is er maar één' },
     { key: 'bezet', color: TAKEN_COLOR.fill, label: 'Bezet' },
   ];
 
